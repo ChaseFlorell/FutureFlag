@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             x:Class="Example.Features.Main.MainPage"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:main="clr-namespace:Example.Features.Main;assembly=Example"
+             xmlns:features="clr-namespace:FeatureFlag;assembly=FeatureFlag.Forms"
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="LightGray">
+    
+    <ContentPage.BindingContext>
+        <main:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <Grid Margin="6" RowSpacing="12">
+            <Grid.RowDefinitions>
+                <!-- composite related rows -->
+                <RowDefinition Height="{features:GridLengthForFeatureFlag AllFlag, GridLength=*}" /> <!-- this row is hidden -->
+                <RowDefinition Height="{features:GridLengthForFeatureFlag AnyFlag, GridLength=*}" />
+                
+                <!-- simple row -->
+                <RowDefinition Height="*" />
+                
+                <!-- date related rows -->
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <!-- All -->
+            <Frame Grid.Row="0" >
+                <Label Text="This feature is available when ALL conditions are true within the composite declaration" 
+                       Style="{StaticResource Label}" 
+                       features:Toggle.FeatureFlag="{StaticResource AllFlag}"/> 
+            </Frame>
+            
+            <!-- Any -->
+            <Frame Grid.Row="1" BackgroundColor="{features:ColorFeatureFlag AnyFlag, TrueValue=Yellow, FalseValue=Red}">
+                <Label features:Toggle.FeatureFlag="{StaticResource AnyFlag}"
+                       Text="This feature is available when ANY feature is true within the composite declaration" 
+                       Style="{features:StyleFeatureFlag AnyFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
+            </Frame>
+            
+            <!-- Simple -->
+            <Frame Grid.Row="2" BackgroundColor="{features:ColorFeatureFlag SimpleFlag, TrueValue=Lime, FalseValue=Teal}">
+                <Label features:Toggle.FeatureFlag="{StaticResource SimpleFlag}"
+                       Text="This feature is available with a simple boolean toggle" 
+                       Style="{features:StyleFeatureFlag SimpleFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
+            </Frame>
+            
+            <!-- Before True -->
+            <Frame Grid.Row="3" >
+                <Label Text="This feature is available any time before January 1st 2040 at 6pm" 
+                       Style="{StaticResource Label}" 
+                       features:Toggle.FeatureFlag="{StaticResource BeforeThatsTrue}" /> 
+            </Frame>
+            
+            <!-- Before False -->
+            <Frame Grid.Row="4" >
+                <Label Text="This feature is available any time before January 1st 2018 at 6pm" 
+                       Style="{StaticResource Label}" 
+                       features:Toggle.FeatureFlag="{StaticResource BeforeThatsFalse}" /> 
+            </Frame>
+            
+            <!-- After True -->
+            <Frame Grid.Row="5" >
+                <Label Text="This feature is available any time after January 1st 2018 at 6pm" 
+                       Style="{StaticResource Label}" 
+                       features:Toggle.FeatureFlag="{StaticResource AfterThatsTrue}"/> 
+            </Frame>
+            
+            <!-- After False -->
+            <Frame Grid.Row="6" >
+                <Label Text="This feature is available any time after January 1st 2040 at 6pm" 
+                       Style="{StaticResource Label}" 
+                       features:Toggle.FeatureFlag="{StaticResource AfterThatsFalse}" /> 
+            </Frame>
+            
+            <!-- Simple with text toggle -->
+            <Frame Grid.Row="7" >
+                <Label Text="{features:TextFeatureFlag SimpleFlag, TrueValue='Flag is True', FalseValue='Flag is False'}" 
+                       Style="{StaticResource Label}" 
+                       features:Toggle.FeatureFlag="{StaticResource SimpleFlag}" /> 
+            </Frame>
+            
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Example.Styles">
+    <Style TargetType="Label" x:Key="Label">
+        <Setter Property="HorizontalTextAlignment" Value="Center"/> 
+        <Setter Property="VerticalTextAlignment" Value="Center"/> 
+    </Style>
+            
+    <Style TargetType="Label" x:Key="AnyText" BaseResourceKey="Label">
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+            
+    <Style TargetType="Label" x:Key="AllText" BaseResourceKey="Label">
+        <Setter Property="FontAttributes" Value="Italic"/>
+    </Style>
+</ResourceDictionary>
