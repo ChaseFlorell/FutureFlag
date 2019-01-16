@@ -17,4 +17,5 @@
 
     <Import Project="..\FeatureFlag.Shared\FeatureFlag.Shared.projitems" Label="Shared" />
     <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+    
 </Project>
