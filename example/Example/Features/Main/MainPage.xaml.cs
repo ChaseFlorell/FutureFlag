@@ -1,3 +1,5 @@
+using FeatureFlag;
+
 namespace Example.Features.Main
 {
     public partial class MainPage 
@@ -6,5 +8,7 @@ namespace Example.Features.Main
         {
             InitializeComponent();
         }
+
+        public string VersionString => VersionHelper.Version.ToString();
     }
 }

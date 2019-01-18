@@ -22,6 +22,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{76F22C68-F
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeatureFlag.Shared", "src\FeatureFlag.Shared\FeatureFlag.Shared.shproj", "{C20A063A-6033-4A5D-AE64-CB9C1F0822F9}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeatureFlag.Shared.Driod", "src\FeatureFlag.Shared.Driod\FeatureFlag.Shared.Driod.shproj", "{7963974C-6913-4629-AC4B-FB9B42F1726A}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeatureFlag.Shared.Touch", "src\FeatureFlag.Shared.Touch\FeatureFlag.Shared.Touch.shproj", "{32908DFF-2DBB-4CB5-B382-4FB991DB0E31}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeatureFlag.Shared.NetStandard", "src\FeatureFlag.Shared.NetStandard\FeatureFlag.Shared.NetStandard.shproj", "{A55AF2E8-BF36-44E3-94AA-49160A4A4DCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|iPhone = Ad-Hoc|iPhone

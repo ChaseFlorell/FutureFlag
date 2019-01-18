@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)OnOrAfterDateFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrBeforeDateFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SimpleFeatureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VersionFeatureFlag.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Base\" />

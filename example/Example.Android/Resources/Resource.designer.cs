@@ -845,19 +845,19 @@ namespace Example.Android
 			public const int panelMenuListWidth = 2130772133;
 			
 			// aapt resource value: 0x7f010167
-			public const int passwordFlagContentDescription = 2130772327;
+			public const int passwordToggleContentDescription = 2130772327;
 			
 			// aapt resource value: 0x7f010166
-			public const int passwordFlagDrawable = 2130772326;
+			public const int passwordToggleDrawable = 2130772326;
 			
 			// aapt resource value: 0x7f010165
-			public const int passwordFlagEnabled = 2130772325;
+			public const int passwordToggleEnabled = 2130772325;
 			
 			// aapt resource value: 0x7f010168
-			public const int passwordFlagTint = 2130772328;
+			public const int passwordToggleTint = 2130772328;
 			
 			// aapt resource value: 0x7f010169
-			public const int passwordFlagTintMode = 2130772329;
+			public const int passwordToggleTintMode = 2130772329;
 			
 			// aapt resource value: 0x7f010091
 			public const int popupMenuStyle = 2130772113;
@@ -4536,10 +4536,10 @@ namespace Example.Android
 			public const int Base_Widget_AppCompat_CompoundButton_Switch = 2131427532;
 			
 			// aapt resource value: 0x7f0b000f
-			public const int Base_Widget_AppCompat_DrawerArrowFlag = 2131427343;
+			public const int Base_Widget_AppCompat_DrawerArrowToggle = 2131427343;
 			
 			// aapt resource value: 0x7f0b00cd
-			public const int Base_Widget_AppCompat_DrawerArrowFlag_Common = 2131427533;
+			public const int Base_Widget_AppCompat_DrawerArrowToggle_Common = 2131427533;
 			
 			// aapt resource value: 0x7f0b007c
 			public const int Base_Widget_AppCompat_DropDownItem_Spinner = 2131427452;
@@ -5145,7 +5145,7 @@ namespace Example.Android
 			public const int Widget_AppCompat_CompoundButton_Switch = 2131427634;
 			
 			// aapt resource value: 0x7f0b0133
-			public const int Widget_AppCompat_DrawerArrowFlag = 2131427635;
+			public const int Widget_AppCompat_DrawerArrowToggle = 2131427635;
 			
 			// aapt resource value: 0x7f0b0134
 			public const int Widget_AppCompat_DropDownItem_Spinner = 2131427636;
@@ -6424,7 +6424,7 @@ namespace Example.Android
 			// aapt resource value: 2
 			public const int DesignTheme_textColorError = 2;
 			
-			public static int[] DrawerArrowFlag = new int[] {
+			public static int[] DrawerArrowToggle = new int[] {
 					2130772175,
 					2130772176,
 					2130772177,
@@ -6435,28 +6435,28 @@ namespace Example.Android
 					2130772182};
 			
 			// aapt resource value: 4
-			public const int DrawerArrowFlag_arrowHeadLength = 4;
+			public const int DrawerArrowToggle_arrowHeadLength = 4;
 			
 			// aapt resource value: 5
-			public const int DrawerArrowFlag_arrowShaftLength = 5;
+			public const int DrawerArrowToggle_arrowShaftLength = 5;
 			
 			// aapt resource value: 6
-			public const int DrawerArrowFlag_barLength = 6;
+			public const int DrawerArrowToggle_barLength = 6;
 			
 			// aapt resource value: 0
-			public const int DrawerArrowFlag_color = 0;
+			public const int DrawerArrowToggle_color = 0;
 			
 			// aapt resource value: 2
-			public const int DrawerArrowFlag_drawableSize = 2;
+			public const int DrawerArrowToggle_drawableSize = 2;
 			
 			// aapt resource value: 3
-			public const int DrawerArrowFlag_gapBetweenBars = 3;
+			public const int DrawerArrowToggle_gapBetweenBars = 3;
 			
 			// aapt resource value: 1
-			public const int DrawerArrowFlag_spinBars = 1;
+			public const int DrawerArrowToggle_spinBars = 1;
 			
 			// aapt resource value: 7
-			public const int DrawerArrowFlag_thickness = 7;
+			public const int DrawerArrowToggle_thickness = 7;
 			
 			public static int[] FloatingActionButton = new int[] {
 					2130772030,
@@ -7286,19 +7286,19 @@ namespace Example.Android
 			public const int TextInputLayout_hintTextAppearance = 2;
 			
 			// aapt resource value: 13
-			public const int TextInputLayout_passwordFlagContentDescription = 13;
+			public const int TextInputLayout_passwordToggleContentDescription = 13;
 			
 			// aapt resource value: 12
-			public const int TextInputLayout_passwordFlagDrawable = 12;
+			public const int TextInputLayout_passwordToggleDrawable = 12;
 			
 			// aapt resource value: 11
-			public const int TextInputLayout_passwordFlagEnabled = 11;
+			public const int TextInputLayout_passwordToggleEnabled = 11;
 			
 			// aapt resource value: 14
-			public const int TextInputLayout_passwordFlagTint = 14;
+			public const int TextInputLayout_passwordToggleTint = 14;
 			
 			// aapt resource value: 15
-			public const int TextInputLayout_passwordFlagTintMode = 15;
+			public const int TextInputLayout_passwordToggleTintMode = 15;
 			
 			public static int[] Toolbar = new int[] {
 					16842927,

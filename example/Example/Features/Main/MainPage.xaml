@@ -6,6 +6,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:main="clr-namespace:Example.Features.Main;assembly=Example"
              xmlns:features="clr-namespace:FeatureFlag;assembly=FeatureFlag.Forms"
+             x:Name="this"
              ios:Page.UseSafeArea="true"
              BackgroundColor="LightGray">
     
@@ -24,6 +25,7 @@
                 <RowDefinition Height="*" />
                 
                 <!-- date related rows -->
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -85,6 +87,13 @@
                 <Label Text="{features:TextFeatureFlag SimpleFlag, TrueValue='Flag is True', FalseValue='Flag is False'}" 
                        Style="{StaticResource Label}" 
                        features:Toggle.FeatureFlag="{StaticResource SimpleFlag}" /> 
+            </Frame>
+            
+            <!-- Version -->
+            <Frame Grid.Row="8" >
+                <Label Text="{Binding VersionString, Source={x:Reference this}}" 
+                       Style="{StaticResource Label}" 
+                       features:Toggle.FeatureFlag="{StaticResource VersionFlag}" /> 
             </Frame>
             
         </Grid>
