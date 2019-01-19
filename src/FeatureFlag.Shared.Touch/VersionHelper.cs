@@ -3,12 +3,9 @@ using Foundation;
 
 namespace FeatureFlag
 {
-    public class VersionHelper
+    public class VersionHelper : Base.VersionHelper
     {
-        private static readonly Lazy<Version> _version = new Lazy<Version>(GetTouchVersion);
-        public static Version Version => _version.Value;
-
-        private static Version GetTouchVersion()
+        protected override Version GetVersion()
         {
             var versionString = NSBundle.MainBundle.InfoDictionary[new NSString("CFBundleVersion")].ToString();
             return new Version(versionString);

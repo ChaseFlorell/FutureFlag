@@ -3,9 +3,8 @@ using System.Reflection;
 
 namespace FeatureFlag
 {
-    public class VersionHelper
+    public class VersionHelper : Base.VersionHelper
     {
-        private static Version _version;
-        public static Version Version => _version ?? (_version = Assembly.GetExecutingAssembly().GetName().Version);
+        protected override Version GetVersion() => Assembly.GetExecutingAssembly().GetName().Version;
     }
 }

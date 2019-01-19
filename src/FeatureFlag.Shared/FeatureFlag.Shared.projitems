@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AnyFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\CompositeFeatureToggle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\DateFeatureToggle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\VersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BetweenDatesFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrAfterDateFeatureFlag.cs" />
