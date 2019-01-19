@@ -69,6 +69,10 @@
     <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\FeatureFlag.Forms\FeatureFlag.Forms.csproj">
+      <Project>{3ee053ca-9e61-4157-82a1-4a69075b87c7}</Project>
+      <Name>FeatureFlag.Forms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Example\Example.csproj">
       <Project>{ac290286-b54c-4235-857f-ee3160254042}</Project>
       <Name>Example</Name>
