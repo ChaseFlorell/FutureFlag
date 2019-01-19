@@ -9,6 +9,6 @@ namespace Example.Features.Main
             InitializeComponent();
         }
 
-        public string VersionString => VersionHelper.Version.ToString();
+        public string VersionString => new VersionHelper().Version.ToString();
     }
 }
