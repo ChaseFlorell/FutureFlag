@@ -11,6 +11,7 @@
     <featureFlag:OnOrBeforeDateFeatureFlag x:Key="BeforeThatsTrue"  Date="01-Jan-2040 18:00:00" />
     <featureFlag:OnOrAfterDateFeatureFlag  x:Key="AfterThatsFalse"  Date="01-Jan-2040 18:00:00" />
     <featureFlag:OnOrBeforeDateFeatureFlag x:Key="BeforeThatsFalse" Date="01-Jan-2018 18:00:00" />
+    
     <featureFlag:VersionFeatureFlag        x:Key="VersionFlag" >
         <featureFlag:VersionFeatureFlag.Version>
             <OnPlatform x:TypeArguments="system:String">
