@@ -4,11 +4,17 @@ namespace FeatureFlag.Base
 {
     public abstract class VersionHelper
     {        
-        private Version _version;
+        private static Version _version;
         private static bool _isVersionOverridden;
         private static Version _overriddenVersion;
+        private static VersionHelper _context;
+
+        protected VersionHelper()
+        {
+            _context = _context ?? this;
+        }
         
-        public Version Version => _version ?? (_version = GetVersionInternal());
+        public static Version Version => _version ?? (_version = GetVersionInternal(_context));
 
         public static void OverrideVersion(string version) => OverrideVersion(new Version(version));
 
@@ -18,7 +24,7 @@ namespace FeatureFlag.Base
             _overriddenVersion = version;
         }
 
-        private Version GetVersionInternal() => _isVersionOverridden ? _overriddenVersion : GetVersion();
+        private static Version GetVersionInternal(VersionHelper context) => _isVersionOverridden ? _overriddenVersion : context.GetVersion();
         protected abstract Version GetVersion();
     }
 }

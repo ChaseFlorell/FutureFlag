@@ -13,8 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)AlwaysOffFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AlwaysOnFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AnyFeatureFlag.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\CompositeFeatureToggle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Base\DateFeatureToggle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\CompositeFeatureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\DateFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\VersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BetweenDatesFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IFeatureFlag.cs" />
