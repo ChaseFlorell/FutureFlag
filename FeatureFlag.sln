@@ -28,6 +28,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeatureFlag.Shared.Touch", 
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FeatureFlag.Shared.NetStandard", "src\FeatureFlag.Shared.NetStandard\FeatureFlag.Shared.NetStandard.shproj", "{A55AF2E8-BF36-44E3-94AA-49160A4A4DCE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{73F4A752-579C-4392-BB14-8AB606AEE91F}"
+ProjectSection(SolutionItems) = preProject
+	src\Directory.Build.props = src\Directory.Build.props
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|iPhone = Ad-Hoc|iPhone
