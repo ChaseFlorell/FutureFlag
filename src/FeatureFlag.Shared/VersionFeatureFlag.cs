@@ -4,15 +4,11 @@ namespace FeatureFlag
 {
     public class VersionFeatureFlag : IFeatureFlag
     {
-        private Lazy<VersionHelper> _appVersionHelper;
         private Version _version;
-
-        public VersionFeatureFlag()
-        {
-            _appVersionHelper = new Lazy<VersionHelper>(() => new VersionHelper());
-        }
+        private static VersionHelper _appVersionHelper;
+        private VersionHelper AppVersionHelper => _appVersionHelper ?? (_appVersionHelper = new VersionHelper());
         private Version RequestedVersion => _version ?? (_version = new Version(Version));
         public string Version { get; set; }
-        public bool IsEnabled => RequestedVersion <= _appVersionHelper.Value.Version;
+        public bool IsEnabled => RequestedVersion <= AppVersionHelper.Version;
     }
 }

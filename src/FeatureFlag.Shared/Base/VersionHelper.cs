@@ -18,7 +18,7 @@ namespace FeatureFlag.Base
             _overriddenVersion = version;
         }
 
-        private Version GetVersionInternal() => _isVersionOverridden ? _overriddenVersion : GetVersion();
         protected abstract Version GetVersion();
+        private Version GetVersionInternal() => _isVersionOverridden ? _overriddenVersion : GetVersion();
     }
 }
