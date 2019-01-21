@@ -6,6 +6,7 @@ var clean = Argument("configuration", "Clean");
 var configuration = Argument("configuration", "Release");
 var environment = Argument<string>("environment", "local");
 var artifactsDir = Directory("./artifacts");
+var versionSuffix = Argument("versionSuffix", "");
 
 var notLocal = !environment.Equals("local");
 
@@ -50,6 +51,7 @@ Task("Build")
         .SetConfiguration(configuration)
         .SetVerbosity(Verbosity.Minimal)
         .WithTarget("Rebuild")
+        .WithProperty("VersionSuffix", versionSuffix)
         .WithProperty("OutDir", System.IO.Path.GetFullPath(artifactsDir.ToString()))
       );
 });
