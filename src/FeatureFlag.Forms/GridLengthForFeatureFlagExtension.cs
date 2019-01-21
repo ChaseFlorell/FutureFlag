@@ -5,9 +5,22 @@ using Xamarin.Forms.Xaml;
 namespace FeatureFlag
 {
     [ContentProperty(nameof(Key))]
-    public class GridLengthForFeatureFlagExtension : IMarkupExtension
+    public class GridLengthForFeatureFlagExtension : BindableObject, IMarkupExtension
     {
-        public GridLength GridLength { get; set; } = 0D;
+        public static readonly BindableProperty GridLengthProperty = BindableProperty.Create(nameof(GridLength),
+            typeof(GridLength),
+            typeof(GridLengthForFeatureFlagExtension),
+            GridLength.Star);
+
+        /// <summary>
+        /// GridLength summary. This is a bindable property.
+        /// </summary>
+        public GridLength GridLength
+        {
+            get => (GridLength) GetValue(GridLengthProperty);
+            set => SetValue(GridLengthProperty, value);
+        }
+        
         public string Key { get; set; }
         
         public object ProvideValue(IServiceProvider serviceProvider)
