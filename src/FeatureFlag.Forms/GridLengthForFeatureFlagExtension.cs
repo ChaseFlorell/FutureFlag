@@ -10,7 +10,7 @@ namespace FeatureFlag
         public static readonly BindableProperty GridLengthProperty = BindableProperty.Create(nameof(GridLength),
             typeof(GridLength),
             typeof(GridLengthForFeatureFlagExtension),
-            GridLength.Star);
+            new GridLength(1.0, GridUnitType.Star));
 
         /// <summary>
         /// GridLength summary. This is a bindable property.
