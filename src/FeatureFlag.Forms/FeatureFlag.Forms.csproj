@@ -3,8 +3,14 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid80;MonoAndroid81</TargetFrameworks>
         <RootNamespace>FeatureFlag</RootNamespace>
+        <AssemblyName>FeatureFlag.Forms</AssemblyName>
+        <PackageId>FeatureFlag.Forms</PackageId>
         <DefineConstants>XAMARIN_FORMS</DefineConstants>
         <LangVersion>latest</LangVersion>
+
+        <Summary>FeatureFlag.Forms: a feature flag library designed to target Xamarin.Forms</Summary>
+        <Description>FeatureFlag.Forms: a feature flag library designed to target Xamarin.Forms</Description>
+        <Title>Feature Flag for Xamarin Forms</Title>
     </PropertyGroup>
 
     <ItemGroup>

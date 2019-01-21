@@ -3,6 +3,13 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
         <LangVersion>latest</LangVersion>
+        <AssemblyName>FeatureFlag</AssemblyName>
+        <PackageId>FeatureFlag</PackageId>
+
+        <Summary>FeatureFlag.Forms: a feature flag library designed to target any .net application supporting netstandard 2.0</Summary>
+        <Description>FeatureFlag.Forms: a feature flag library designed to target any .net application supporting netstandard 2.0</Description>
+        <Title>Feature Flag</Title>
+
     </PropertyGroup>
 
     <ItemGroup>
