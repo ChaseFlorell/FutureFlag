@@ -30,15 +30,13 @@ namespace FeatureFlag
             if(!(newvalue is IFeatureFlag featureFlag))
                 throw new ArgumentException("Value can only be of type IFeatureFlag", nameof(newvalue));
 
-            // using a trigger allows the user to define "IsVisible" on top of the feature toggle.
-            var trigger = Helpers.CreateDataTriggerForFeatureFlag(
+            // using a trigger allows the user to define "IsVisible" on top of the feature toggle.          
+            visual.Triggers.Add(Helpers.CreateDataTriggerForFeatureFlag(
                 featureFlag, 
                 VisualElement.IsVisibleProperty, 
                 false, 
                 typeof(VisualElement),
-                false);
-            
-            visual.Triggers.Add(trigger);
+                false));
         }
     }
 }
