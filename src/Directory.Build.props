@@ -3,6 +3,8 @@
 
         <PackOnBuild>true</PackOnBuild>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
+        <PackageOutputDir>$(OutputPath)</PackageOutputDir>
 
         <Owners>Chase Florell</Owners>
         <Authors>Chase Florell</Authors>
