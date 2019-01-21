@@ -6,7 +6,7 @@
     <SharedGUID>3FD95F89-2015-46EE-BEE7-91CCFC974782</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>FeatureFlag.Shared.Driod</Import_RootNamespace>
+    <Import_RootNamespace>FeatureFlag.Shared.Droid</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)VersionHelper.cs" />

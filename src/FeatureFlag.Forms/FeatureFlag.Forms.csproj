@@ -39,7 +39,7 @@
     </ItemGroup>
 
     <Import Project="..\FeatureFlag.Shared\FeatureFlag.Shared.projitems" Label="Shared" />
-    <Import Project="..\FeatureFlag.Shared.Driod\FeatureFlag.Shared.Driod.projitems" Label="Droid" Condition="$(TargetFramework.StartsWith('MonoAndroid'))" />
+    <Import Project="..\FeatureFlag.Shared.Droid\FeatureFlag.Shared.Droid.projitems" Label="Droid" Condition="$(TargetFramework.StartsWith('MonoAndroid'))" />
     <Import Project="..\FeatureFlag.Shared.Touch\FeatureFlag.Shared.Touch.projitems" Label="Touch" Condition="$(TargetFramework.StartsWith('Xamarin.iOS'))" />
     <Import Project="..\FeatureFlag.Shared.NetStandard\FeatureFlag.Shared.NetStandard.projitems" Label="NetStandard" Condition="$(TargetFramework.StartsWith('netstandard'))" />
     <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
