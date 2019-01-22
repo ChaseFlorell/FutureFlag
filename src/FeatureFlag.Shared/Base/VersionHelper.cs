@@ -10,9 +10,9 @@ namespace FeatureFlag.Base
         
         public Version Version => _version ?? (_version = GetVersionInternal());
 
-        public static void OverrideVersion(string version) => OverrideVersion(new Version(version));
+        internal static void OverrideVersion(string version) => OverrideVersion(new Version(version));
 
-        public static void OverrideVersion(Version version)
+        internal static void OverrideVersion(Version version)
         {
             _isVersionOverridden = true;
             _overriddenVersion = version;

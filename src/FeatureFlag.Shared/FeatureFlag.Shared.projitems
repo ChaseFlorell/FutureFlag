@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\DateFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\VersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BetweenDatesFeatureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FeatureFlags.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrAfterDateFeatureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrBeforeDateFeatureFlag.cs" />
