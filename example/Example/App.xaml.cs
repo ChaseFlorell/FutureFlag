@@ -1,4 +1,5 @@
 ﻿using Example.Features.Main;
+using FeatureFlag;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -10,6 +11,7 @@ namespace Example
         public App()
         {
             InitializeComponent();
+            FeatureFlagConfiguration.Configure(x => x.OverrideAppVersion("s").OverrideAppVersion());
             
             MainPage = new MainPage();
         }
