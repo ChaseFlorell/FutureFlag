@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid80;MonoAndroid81</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         <AssemblyName>FeatureFlag</AssemblyName>
         <PackageId>FeatureFlag</PackageId>
@@ -14,13 +14,25 @@
 
     <ItemGroup>
         <PackageReference Include="MSBuild.Sdk.Extras" Version="1.6.60" PrivateAssets="All" />
+    </ItemGroup>    
+    
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <!-- Android specific includes -->
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid81')) ">
+        <!-- Android 8.1 specific includes -->
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid80')) ">
+        <!-- Android 8.0 specific includes -->
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+        <!-- iOS specific includes -->
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\FeatureFlag.Forms\FeatureFlag.Forms.csproj" />
-    </ItemGroup>
-    
     <Import Project="..\FeatureFlag.Shared\FeatureFlag.Shared.projitems" Label="Shared" />
+    <Import Project="..\FeatureFlag.Shared.Droid\FeatureFlag.Shared.Droid.projitems" Label="Droid" Condition="$(TargetFramework.StartsWith('MonoAndroid'))" />
+    <Import Project="..\FeatureFlag.Shared.Touch\FeatureFlag.Shared.Touch.projitems" Label="Touch" Condition="$(TargetFramework.StartsWith('Xamarin.iOS'))" />
+    <Import Project="..\FeatureFlag.Shared.NetStandard\FeatureFlag.Shared.NetStandard.projitems" Label="NetStandard" Condition="$(TargetFramework.StartsWith('netstandard'))" />
     <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
     
 </Project>
