@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid80;MonoAndroid81</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <AssemblyName>FutureFlag</AssemblyName>
+        <PackageId>FutureFlag</PackageId>
+
+        <Summary>FutureFlag.Forms: a feature flag library designed to target any .net application supporting netstandard 2.0</Summary>
+        <Description>FutureFlag.Forms: a feature flag library designed to target any .net application supporting netstandard 2.0</Description>
+        <Title>Future Flag</Title>
+
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MSBuild.Sdk.Extras" Version="1.6.60" PrivateAssets="All" />
+    </ItemGroup>    
+    
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
+    <!-- Android specific includes -->
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid81')) ">
+        <!-- Android 8.1 specific includes -->
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid80')) ">
+        <!-- Android 8.0 specific includes -->
+    </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
+        <!-- iOS specific includes -->
+    </ItemGroup>
+
+    <Import Project="..\FutureFlag.Shared\FutureFlag.Shared.projitems" Label="Shared" />
+    <Import Project="..\FutureFlag.Shared.Droid\FutureFlag.Shared.Droid.projitems" Label="Droid" Condition="$(TargetFramework.StartsWith('MonoAndroid'))" />
+    <Import Project="..\FutureFlag.Shared.Touch\FutureFlag.Shared.Touch.projitems" Label="Touch" Condition="$(TargetFramework.StartsWith('Xamarin.iOS'))" />
+    <Import Project="..\FutureFlag.Shared.NetStandard\FutureFlag.Shared.NetStandard.projitems" Label="NetStandard" Condition="$(TargetFramework.StartsWith('netstandard'))" />
+    <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+    
+</Project>

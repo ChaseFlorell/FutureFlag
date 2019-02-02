@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\FeatureFlag.Forms\FeatureFlag.Forms.csproj" />
+      <ProjectReference Include="..\..\src\FutureFlag.Forms\FutureFlag.Forms.csproj" />
     </ItemGroup>
     
 </Project>

@@ -59,9 +59,9 @@
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FeatureFlag.Forms\FeatureFlag.Forms.csproj">
+    <ProjectReference Include="..\..\src\FutureFlag.Forms\FutureFlag.Forms.csproj">
       <Project>{3ee053ca-9e61-4157-82a1-4a69075b87c7}</Project>
-      <Name>FeatureFlag.Forms</Name>
+      <Name>FutureFlag.Forms</Name>
     </ProjectReference>
     <ProjectReference Include="..\Example\Example.csproj">
       <Project>{ac290286-b54c-4235-857f-ee3160254042}</Project>

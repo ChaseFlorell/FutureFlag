@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{C20A063A-6033-4A5D-AE64-CB9C1F0822F9}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FutureFlag</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AllFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AlwaysOffFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AlwaysOnFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnyFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\CompositeFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\DateFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Base\VersionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BetweenDatesFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FutureFlagConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IFutureFlagConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OnOrAfterDateFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OnOrBeforeDateFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SimpleFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VersionFutureFlag.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Base\" />
+  </ItemGroup>
+</Project>

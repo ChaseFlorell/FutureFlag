@@ -47,7 +47,7 @@ Task("Build")
     .IsDependentOn("XDT Transform")
     .Does(() => {
       Information(artifactsDir);
-      MSBuild("./FeatureFlag.sln", settings => settings
+      MSBuild("./FutureFlag.sln", settings => settings
         .SetConfiguration(configuration)
         .SetVerbosity(Verbosity.Minimal)
         .WithTarget("Rebuild")

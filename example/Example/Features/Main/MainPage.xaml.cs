@@ -1,6 +1,6 @@
-using FeatureFlag;
+using FutureFlag;
 
-namespace Example.Features.Main
+namespace Example.Futures.Main
 {
     public partial class MainPage 
     {
