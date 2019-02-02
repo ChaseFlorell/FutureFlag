@@ -5,6 +5,7 @@ namespace FeatureFlag
 {
     public class OnOrAfterDateFeatureFlag : DateFeatureFlag
     {
-        public override bool IsEnabled => (UseUtc? DateTime.UtcNow : DateTime.Now) >= DateTime.Parse(Date, CultureInfo.DateTimeFormat);
+        public string Date { get; set; }
+        public override bool IsEnabled => (UseUtc? UtcNow : Now) >= DateTime.Parse(Date, CultureInfo.DateTimeFormat);
     }
 }
