@@ -45,7 +45,7 @@ Task("Run-Unit-Tests")
 {
     var resultsFile = artifactsDir.ToString() + "/test-results.xml";
 
-    NUnit3("./tests/**/bin/" + configuration + "/*.Tests.dll;./artifacts/*.Tests.dll", new NUnit3Settings {
+    NUnit3("./artifacts/*.Tests.dll", new NUnit3Settings {
         NoResults = false,
         Results = new[] { new NUnit3Result { FileName = resultsFile } },           
     });
