@@ -19,8 +19,8 @@
         
         <RepositoryUrl>https://github.com/ChaseFlorell/FutureFlag</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        
+        <PackageLicenseUrl>https://raw.githubusercontent.com/ChaseFlorell/FutureFlag/master/LICENSE</PackageLicenseUrl>
+
         <PackageTags>netstandard, dotnet, .net, feature flag, feature toggle, featureflag, featuretoggle</PackageTags>
         <Copyright>© FloMedia Group Inc. All rights reserved.</Copyright>
     </PropertyGroup>
