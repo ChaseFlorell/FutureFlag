@@ -5,7 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:main="clr-namespace:Example.Futures.Main;assembly=Example"
-             xmlns:features="clr-namespace:FutureFlag;assembly=FutureFlag.Forms"
+             xmlns:futures="clr-namespace:FutureFlag;assembly=FutureFlag.Forms"
              x:Name="this"
              ios:Page.UseSafeArea="true"
              BackgroundColor="LightGray">
@@ -18,8 +18,8 @@
         <Grid Margin="6" RowSpacing="12">
             <Grid.RowDefinitions>
                 <!-- composite related rows -->
-                <RowDefinition Height="{features:GridLengthForFutureFlag AllFlag, GridLength=*}" /> <!-- this row is hidden -->
-                <RowDefinition Height="{features:GridLengthForFutureFlag AnyFlag, GridLength=*}" />
+                <RowDefinition Height="{futures:GridLengthForFutureFlag AllFlag, GridLength=*}" /> <!-- this row is hidden -->
+                <RowDefinition Height="{futures:GridLengthForFutureFlag AnyFlag, GridLength=*}" />
                 
                 <!-- simple row -->
                 <RowDefinition Height="*" />
@@ -37,63 +37,63 @@
             <Frame Grid.Row="0" >
                 <Label Text="This feature is available when ALL conditions are true within the composite declaration" 
                        Style="{StaticResource Label}" 
-                       features:Toggle.FutureFlag="{StaticResource AllFlag}"/> 
+                       futures:VisualElement.FutureFlag="{StaticResource AllFlag}"/> 
             </Frame>
             
             <!-- Any -->
-            <Frame Grid.Row="1" BackgroundColor="{features:ColorFutureFlag AnyFlag, TrueValue=Yellow, FalseValue=Red}">
-                <Label features:Toggle.FutureFlag="{StaticResource AnyFlag}"
+            <Frame Grid.Row="1" BackgroundColor="{futures:ColorFutureFlag AnyFlag, TrueValue=Yellow, FalseValue=Red}">
+                <Label futures:VisualElement.FutureFlag="{StaticResource AnyFlag}"
                        Text="This feature is available when ANY feature is true within the composite declaration" 
-                       Style="{features:StyleFutureFlag AnyFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
+                       Style="{futures:StyleFutureFlag AnyFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
             </Frame>
             
             <!-- Simple -->
-            <Frame Grid.Row="2" BackgroundColor="{features:ColorFutureFlag SimpleFlag, TrueValue=Lime, FalseValue=Teal}">
-                <Label features:Toggle.FutureFlag="{StaticResource SimpleFlag}"
+            <Frame Grid.Row="2" BackgroundColor="{futures:ColorFutureFlag SimpleFlag, TrueValue=Lime, FalseValue=Teal}">
+                <Label futures:VisualElement.FutureFlag="{StaticResource SimpleFlag}"
                        Text="This feature is available with a simple boolean toggle" 
-                       Style="{features:StyleFutureFlag SimpleFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
+                       Style="{futures:StyleFutureFlag SimpleFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
             </Frame>
             
             <!-- Before True -->
             <Frame Grid.Row="3" >
                 <Label Text="This feature is available any time before January 1st 2040 at 6pm" 
                        Style="{StaticResource Label}" 
-                       features:Toggle.FutureFlag="{StaticResource BeforeThatsTrue}" /> 
+                       futures:VisualElement.FutureFlag="{StaticResource BeforeThatsTrue}" /> 
             </Frame>
             
             <!-- Before False -->
             <Frame Grid.Row="4" >
                 <Label Text="This feature is available any time before January 1st 2018 at 6pm" 
                        Style="{StaticResource Label}" 
-                       features:Toggle.FutureFlag="{StaticResource BeforeThatsFalse}" /> 
+                       futures:VisualElement.FutureFlag="{StaticResource BeforeThatsFalse}" /> 
             </Frame>
             
             <!-- After True -->
             <Frame Grid.Row="5" >
                 <Label Text="This feature is available any time after January 1st 2018 at 6pm" 
                        Style="{StaticResource Label}" 
-                       features:Toggle.FutureFlag="{StaticResource AfterThatsTrue}"/> 
+                       futures:VisualElement.FutureFlag="{StaticResource AfterThatsTrue}"/> 
             </Frame>
             
             <!-- After False -->
             <Frame Grid.Row="6" >
                 <Label Text="This feature is available any time after January 1st 2040 at 6pm" 
                        Style="{StaticResource Label}" 
-                       features:Toggle.FutureFlag="{StaticResource AfterThatsFalse}" /> 
+                       futures:VisualElement.FutureFlag="{StaticResource AfterThatsFalse}" /> 
             </Frame>
             
             <!-- Simple with text toggle -->
             <Frame Grid.Row="7" >
-                <Label Text="{features:TextFutureFlag SimpleFlag, TrueValue='Flag is True', FalseValue='Flag is False'}" 
+                <Label Text="{futures:TextFutureFlag SimpleFlag, TrueValue='Flag is True', FalseValue='Flag is False'}" 
                        Style="{StaticResource Label}" 
-                       features:Toggle.FutureFlag="{StaticResource SimpleFlag}" /> 
+                       futures:VisualElement.FutureFlag="{StaticResource SimpleFlag}" /> 
             </Frame>
             
             <!-- Version -->
             <Frame Grid.Row="8" >
                 <Label Text="{Binding VersionString, Source={x:Reference this}}" 
                        Style="{StaticResource Label}" 
-                       features:Toggle.FutureFlag="{StaticResource VersionFlag}" /> 
+                       futures:VisualElement.FutureFlag="{StaticResource VersionFlag}" /> 
             </Frame>
             
         </Grid>

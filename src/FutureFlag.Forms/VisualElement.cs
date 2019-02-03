@@ -4,14 +4,14 @@ using Xamarin.Forms;
 
 namespace FutureFlag
 {
-    public sealed class Toggle
+    public sealed class VisualElement
     {
         // ReSharper disable once InconsistentNaming
         private const string FutureFlag = nameof(FutureFlag);
         
         public static readonly BindableProperty FutureFlagProperty = BindableProperty.Create(FutureFlag,
             typeof(IFutureFlag),
-            typeof(Toggle),
+            typeof(VisualElement),
             default(IFutureFlag),
             BindingMode.OneTime, 
             propertyChanged: OnFutureFlagPropertyChanged);
@@ -24,7 +24,7 @@ namespace FutureFlag
         
         private static void OnFutureFlagPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            if(!(bindable is VisualElement visual))
+            if(!(bindable is Xamarin.Forms.VisualElement visual))
                 throw new ArgumentException("Toggle can only be applied to Visual Elements", nameof(bindable));
             
             if(!(newvalue is IFutureFlag featureFlag))
@@ -33,9 +33,9 @@ namespace FutureFlag
             // using a trigger allows the user to define "IsVisible" on top of the feature toggle.          
             visual.Triggers.Add(Helpers.CreateDataTriggerForFutureFlag(
                 featureFlag, 
-                VisualElement.IsVisibleProperty, 
+                Xamarin.Forms.VisualElement.IsVisibleProperty, 
                 false, 
-                typeof(VisualElement),
+                typeof(Xamarin.Forms.VisualElement),
                 false));
         }
     }
