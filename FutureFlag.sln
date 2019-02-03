@@ -36,6 +36,8 @@ ProjectSection(SolutionItems) = preProject
 	build.ps1 = build.ps1
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureFlag.Tests", "tests\FutureFlag.Tests\FutureFlag.Tests.csproj", "{09F44D2A-7968-400A-9ABB-2E3B6428957F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{3EE053CA-9E61-4157-82A1-4A69075B87C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EE053CA-9E61-4157-82A1-4A69075B87C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EE053CA-9E61-4157-82A1-4A69075B87C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F44D2A-7968-400A-9ABB-2E3B6428957F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F44D2A-7968-400A-9ABB-2E3B6428957F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F44D2A-7968-400A-9ABB-2E3B6428957F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F44D2A-7968-400A-9ABB-2E3B6428957F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AC290286-B54C-4235-857F-EE3160254042} = {95EF85DF-5165-454C-9E71-5A44883FDAF0}
