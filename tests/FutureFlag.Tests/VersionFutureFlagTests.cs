@@ -21,9 +21,10 @@ namespace FutureFlag.Tests
             // setup
             _versionFutureFlag.Version = "2.0.0.0";
             
+            
             // assert
             _versionFutureFlag.IsEnabled.Should().BeFalse();
-            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetExecutingAssembly().GetName().Version);
+            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetAssembly(typeof(VersionFutureFlagTests)).GetName().Version);
         }
         
         [Test]
@@ -34,7 +35,7 @@ namespace FutureFlag.Tests
             
             // assert
             _versionFutureFlag.IsEnabled.Should().BeTrue();
-            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetExecutingAssembly().GetName().Version);
+            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetAssembly(typeof(VersionFutureFlagTests)).GetName().Version);
         }
     }
 }
