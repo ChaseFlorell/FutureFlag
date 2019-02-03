@@ -14,8 +14,8 @@ namespace Example
         {
             InitializeComponent();
             
-            FutureFlagConfiguration.Configure(config => 
-            { 
+            FutureFlagConfiguration.Configure(config =>
+            {
                 // here you can override how your application will acquire "Now"
                 // using nodatime to acquire "Now"
                 config.NowProvider(GetNodaNow); 

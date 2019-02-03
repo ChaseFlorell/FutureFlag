@@ -10,7 +10,7 @@ namespace FutureFlag.Base
         
         internal Version Version => _version ?? (_version = GetVersionInternal());
         internal string VersionSource => _isVersionOverridden ? 
-            $"{nameof(IFutureFlagConfiguration)}.{nameof(IFutureFlagConfiguration.OverrideAppVersion)}" 
+            $"{nameof(FutureFlagConfiguration)}.{nameof(FutureFlagConfiguration.OverrideAppVersion)}" 
             : GetVersionSource();
 
         internal static void OverrideVersion(string version) => OverrideVersion(new Version(version));

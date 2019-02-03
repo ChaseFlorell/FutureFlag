@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace FutureFlag.Base
 {
+#if XAMARIN_FORMS
+    [Xamarin.Forms.ContentProperty(nameof(Flags))]
+#endif
     public abstract class CompositeFutureFlag : IFutureFlag
     {        
         private IList<IFutureFlag> _toggles = new List<IFutureFlag>();

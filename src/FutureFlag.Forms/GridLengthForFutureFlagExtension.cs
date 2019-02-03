@@ -4,6 +4,9 @@ using Xamarin.Forms.Xaml;
 
 namespace FutureFlag
 {
+    /// <summary>
+    /// Toggles a <see cref="RowDefinition"/> or <see cref="ColumnDefinition"/> <see cref="Xamarin.Forms.GridLength"/> between ZERO and the specified <see cref="p:GridLength"/> based on whether or not the provided <see cref="p:IFutureFlag.IsEnabled"/>.
+    /// </summary>
     [ContentProperty(nameof(Key))]
     public class GridLengthForFutureFlagExtension : BindableObject, IMarkupExtension
     {
@@ -13,7 +16,7 @@ namespace FutureFlag
             new GridLength(1.0, GridUnitType.Star));
 
         /// <summary>
-        /// GridLength summary. This is a bindable property.
+        /// Gets or sets the GridLength of a <see cref="RowDefinition"/> or <see cref="ColumnDefinition"/>. This is a bindable property.
         /// </summary>
         public GridLength GridLength
         {

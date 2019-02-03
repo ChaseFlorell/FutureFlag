@@ -1,8 +1,10 @@
 using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace FutureFlag
 {
+    [ContentProperty(nameof(Key))]
     public abstract class ValueFutureFlagExtension<T> : IMarkupExtension
     {
         private IFutureFlag _toggle;
