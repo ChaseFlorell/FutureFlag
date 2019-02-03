@@ -9,11 +9,16 @@ namespace FutureFlag.Tests
     {
         private VersionFutureFlag _versionFutureFlag;
 
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            FutureFlagConfiguration.Configure(cfg => cfg.OverrideAppVersion("1.0.0.0"));
+        }
+        
         [SetUp]
         public void SetUp()
         {
             _versionFutureFlag = new VersionFutureFlag();
-            FutureFlagConfiguration.Configure(cfg => cfg.OverrideAppVersion("1.0.0.0"));
         }
         
         [Test]
