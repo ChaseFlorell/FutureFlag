@@ -27,7 +27,11 @@ Task("Default").IsDependentOn("Run-Unit-Tests");
 Task("Build")
     .Does(() => {
       Information(artifactsDir);
-      MSBuild("./FutureFlag.sln", settings => settings
+      MSBuild("./FutureFlag.sln", new MSBuildSettings
+        {
+            ToolVersion = MSBuildToolVersion.VS2017,
+            MSBuildPlatform = (Cake.Common.Tools.MSBuild.MSBuildPlatform)1
+        }
         .SetConfiguration(configuration)
         .SetVerbosity(Verbosity.Minimal)
         .WithTarget("Rebuild")
