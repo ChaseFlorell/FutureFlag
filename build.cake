@@ -14,7 +14,7 @@ Setup(context =>
     var binsToClean = GetDirectories("./src/**/bin/");
     var testsToClean = GetDirectories("./test/**/bin/");
     var artifactsToClean = GetDirectories(artifactsDir);
-
+    Information(configuration);
 	CleanDirectories(binsToClean);
 	CleanDirectories(testsToClean);
     CreateDirectory(artifactsDir);
