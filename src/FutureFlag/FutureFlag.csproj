@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>        
-        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid80;MonoAndroid81</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid80;MonoAndroid81;net452</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         <AssemblyName>FutureFlag</AssemblyName>
         <PackageId>FutureFlag</PackageId>
@@ -32,7 +32,7 @@
     <Import Project="..\FutureFlag.Shared\FutureFlag.Shared.projitems" Label="Shared" />
     <Import Project="..\FutureFlag.Shared.Droid\FutureFlag.Shared.Droid.projitems" Label="Droid" Condition="$(TargetFramework.StartsWith('MonoAndroid'))" />
     <Import Project="..\FutureFlag.Shared.Touch\FutureFlag.Shared.Touch.projitems" Label="Touch" Condition="$(TargetFramework.StartsWith('Xamarin.iOS'))" />
-    <Import Project="..\FutureFlag.Shared.NetStandard\FutureFlag.Shared.NetStandard.projitems" Label="NetStandard" Condition="$(TargetFramework.StartsWith('netstandard'))" />
+    <Import Project="..\FutureFlag.Shared.NetStandard\FutureFlag.Shared.NetStandard.projitems" Label="NetStandard" Condition="$(TargetFramework.StartsWith('net'))" />
     <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
     
 </Project>
