@@ -2,7 +2,7 @@ using System;
 
 namespace FutureFlag.Base
 {
-    public abstract class VersionHelper
+    internal abstract class VersionHelper
     {        
         private static Version _version;
         private static bool _isVersionOverridden;

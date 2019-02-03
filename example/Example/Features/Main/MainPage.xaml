@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             x:Class="Example.Futures.Main.MainPage"
+             x:Class="Example.Features.Main.MainPage"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:main="clr-namespace:Example.Futures.Main;assembly=Example"
+             xmlns:main="clr-namespace:Example.Features.Main;assembly=Example"
              xmlns:futures="clr-namespace:FutureFlag;assembly=FutureFlag.Forms"
-             x:Name="this"
              ios:Page.UseSafeArea="true"
              BackgroundColor="LightGray">
     
@@ -91,7 +90,7 @@
             
             <!-- Version -->
             <Frame Grid.Row="8" >
-                <Label Text="{Binding VersionString, Source={x:Reference this}}" 
+                <Label Text="{Binding VersionString}" 
                        Style="{StaticResource Label}" 
                        futures:VisualElement.FutureFlag="{StaticResource VersionFlag}" /> 
             </Frame>

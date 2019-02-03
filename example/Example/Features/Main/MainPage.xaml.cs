@@ -1,14 +1,10 @@
-using FutureFlag;
-
-namespace Example.Futures.Main
+namespace Example.Features.Main
 {
-    public partial class MainPage 
+    public partial class MainPage
     {
         public MainPage()
         {
             InitializeComponent();
         }
-
-        public string VersionString => new VersionHelper().Version.ToString();
     }
 }

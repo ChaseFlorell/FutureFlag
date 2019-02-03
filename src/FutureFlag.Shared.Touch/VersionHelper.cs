@@ -3,7 +3,7 @@ using Foundation;
 
 namespace FutureFlag
 {
-    public class VersionHelper : Base.VersionHelper
+    internal class VersionHelper : Base.VersionHelper
     {
         protected override Version GetVersion()
         {

@@ -1,4 +1,4 @@
-﻿using Example.Futures.Main;
+﻿using Example.Features.Main;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]

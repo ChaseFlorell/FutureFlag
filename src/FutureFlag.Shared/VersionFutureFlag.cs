@@ -8,6 +8,7 @@ namespace FutureFlag
         private static VersionHelper _appVersionHelper;
         private VersionHelper AppVersionHelper => _appVersionHelper ?? (_appVersionHelper = new VersionHelper());
         private Version RequestedVersion => _version ?? (_version = new Version(Version));
+        public Version ActualVersion => AppVersionHelper.Version;
         public string Version { get; set; }
         public bool IsEnabled => RequestedVersion <= AppVersionHelper.Version;
     }
