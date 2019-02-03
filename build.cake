@@ -1,5 +1,4 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
-#addin Cake.XdtTransform
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.9.0
 
 var target = Argument("target", "Default");
 var clean = Argument("configuration", "Clean");
