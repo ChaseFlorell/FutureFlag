@@ -13,6 +13,7 @@ namespace FutureFlag.Tests
         public void SetUp()
         {
             _versionFutureFlag = new VersionFutureFlag();
+            FutureFlagConfiguration.Configure(cfg => cfg.OverrideAppVersion("1.0.0.0"));
         }
         
         [Test]
