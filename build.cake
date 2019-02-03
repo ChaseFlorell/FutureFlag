@@ -16,35 +16,15 @@ Setup(context =>
     var testsToClean = GetDirectories("./test/**/bin/");
     var artifactsToClean = GetDirectories(artifactsDir);
 
-    //DotNetCoreRestore();
 	CleanDirectories(binsToClean);
 	CleanDirectories(testsToClean);
     CreateDirectory(artifactsDir);
+    NuGetRestore("./FutureFlag.sln", new NuGetRestoreSettings { NoCache = true });
 });
 
 Task("Default").IsDependentOn("Run-Unit-Tests");
 
-Task("XDT Transform")
-    .WithCriteria(notLocal)
-    .Does(() => {
-        var directories = GetDirectories("./tests/**");
-        foreach(var dir in directories)
-        {
-            var xslPath = dir + "/app." + environment + ".config";
-            var xmlPath = dir + "/app.config";
-            
-            if(FileExists(xslPath))
-            {
-                var xsl = File(xslPath);
-                var xml = File(xmlPath);
-                Information("Transforming {0} into {1}", xsl, xml);
-                XdtTransformConfig(xml,xsl, xml);
-            } 
-        }
-    });
-
 Task("Build")
-    .IsDependentOn("XDT Transform")
     .Does(() => {
       Information(artifactsDir);
       MSBuild("./FutureFlag.sln", settings => settings
