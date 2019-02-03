@@ -7,15 +7,15 @@ namespace Example.Features.Main
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        private readonly string _prefix;
+        private readonly VersionFutureFlag _versionFutureFlag;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainPageViewModel()
         {
-            _prefix = Device.RuntimePlatform == Device.iOS ? "CFBundleVersion is {0}" : "Android VersionName is {0}";
+            _versionFutureFlag =  (VersionFutureFlag)Application.Current.Resources["VersionFlag"];
         }
         
-        public string VersionString => string.Format(_prefix, ((VersionFutureFlag)Application.Current.Resources["VersionFlag"]).ActualVersion);
+        public string VersionString => $"{_versionFutureFlag.VersionSource}: {_versionFutureFlag.ActualVersion}";
 
         private void RaisePropertyChanged([CallerMemberName] string propertyName = null) 
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

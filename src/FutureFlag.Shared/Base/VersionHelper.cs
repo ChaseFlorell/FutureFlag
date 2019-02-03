@@ -8,7 +8,10 @@ namespace FutureFlag.Base
         private static bool _isVersionOverridden;
         private static Version _overriddenVersion;
         
-        public Version Version => _version ?? (_version = GetVersionInternal());
+        internal Version Version => _version ?? (_version = GetVersionInternal());
+        internal string VersionSource => _isVersionOverridden ? 
+            $"{nameof(IFutureFlagConfiguration)}.{nameof(IFutureFlagConfiguration.OverrideAppVersion)}" 
+            : GetVersionSource();
 
         internal static void OverrideVersion(string version) => OverrideVersion(new Version(version));
 
@@ -19,6 +22,7 @@ namespace FutureFlag.Base
         }
 
         protected abstract Version GetVersion();
+        protected abstract string GetVersionSource();
         private Version GetVersionInternal() => _isVersionOverridden ? _overriddenVersion : GetVersion();
     }
 }
