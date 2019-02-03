@@ -33,7 +33,6 @@
     <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid80')) ">
         <!-- Android 8.0 specific includes -->
     </ItemGroup>
-    
     <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
         <!-- iOS specific includes -->
     </ItemGroup>

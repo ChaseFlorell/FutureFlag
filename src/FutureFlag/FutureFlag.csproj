@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
+    <PropertyGroup>        
         <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid80;MonoAndroid81</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         <AssemblyName>FutureFlag</AssemblyName>
         <PackageId>FutureFlag</PackageId>
 
-        <Summary>FutureFlag.Forms: a feature flag library designed to target any .net application supporting netstandard 2.0</Summary>
-        <Description>FutureFlag.Forms: a feature flag library designed to target any .net application supporting netstandard 2.0</Description>
+        <Summary>FutureFlag: a feature flag library designed to target any .net application supporting netstandard 2.0</Summary>
+        <Description>FutureFlag: a feature flag library designed to target any .net application supporting netstandard 2.0</Description>
         <Title>Future Flag</Title>
 
     </PropertyGroup>
