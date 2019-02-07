@@ -33,6 +33,7 @@ namespace FutureFlag
 
         /// <inheritdoc cref="IFutureFlag"/>
         /// <returns><c>true</c> if the current version is greater than or equal to the requested <see cref="Version"/> otherwise <c>false</c></returns>
-        public bool IsEnabled => RequestedVersion <= AppVersionHelper.Version;
+        public bool IsEnabled => AppVersionHelper.Version == AppVersionHelper.ExactVersionToOverride 
+                                 || AppVersionHelper.Version >= RequestedVersion;
     }
 }

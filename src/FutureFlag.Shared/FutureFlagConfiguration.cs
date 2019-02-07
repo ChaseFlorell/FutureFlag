@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using FutureFlag.Base;
+using FutureFlag.Exceptions;
 
 namespace FutureFlag
 {
@@ -39,13 +40,9 @@ namespace FutureFlag
         /// <summary>Overrides the way the library acquires the current running version</summary>
         /// <param name="version">A <see cref="System.String"/> representation of the version</param>
         /// <exception cref="InvalidOperationException">Thrown when a user tries to override the app version more than once</exception>
-        public FutureFlagConfiguration OverrideAppVersion(string version)
-        {
-            AssertConfiguration();
-            Base.VersionHelper.OverrideVersion(version);
-            return this;
-        }
-        
+        public FutureFlagConfiguration OverrideAppVersion(string version) 
+            => OverrideAppVersion(new Version(version));
+
         /// <summary>Overrides the way the library acquires the current running version</summary>
         /// <param name="version">A <see cref="System.Version"/> representation of the version</param>
         /// <exception cref="InvalidOperationException">Thrown when a user tries to override the app version more than once</exception>
@@ -53,6 +50,26 @@ namespace FutureFlag
         {
             AssertConfiguration();
             Base.VersionHelper.OverrideVersion(version);
+            return this;
+        }
+
+        /// <summary>Indicates an exact version you want to set <see cref="p:IFutureFlag.IsEnabled"/> = <c>true</c> for.</summary>
+        /// <param name="version">A <see cref="System.String"/> representation of the version</param>
+        /// <remarks>This is useful for development purposes in order to ensure you can see future features</remarks>
+        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the IsEnabled version more than once</exception>
+        /// <exception cref="InvalidAppVersionException">Thrown when you specify <c>null</c> or <c>default(Version)</c></exception>
+        public FutureFlagConfiguration SetIsEnabledForExactVersion(string version) 
+            => SetIsEnabledForExactVersion(new Version(version));
+
+        /// <summary>Indicates an exact version you want to set <see cref="p:IFutureFlag.IsEnabled"/> = <c>true</c> for.</summary>
+        /// <param name="version">A <see cref="System.Version"/> representation of the version</param>
+        /// <remarks>This is useful for development purposes in order to ensure you can see future features</remarks>
+        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the IsEnabled version more than once</exception>
+        /// <exception cref="InvalidAppVersionException">Thrown when you specify <c>null</c> or <c>default(Version)</c></exception>
+        public FutureFlagConfiguration SetIsEnabledForExactVersion(Version version)
+        {
+            AssertConfiguration();
+            Base.VersionHelper.SetIsEnabledForExactVersion(version);
             return this;
         }
         

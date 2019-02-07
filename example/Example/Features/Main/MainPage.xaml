@@ -30,6 +30,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
             <!-- All -->
@@ -93,6 +94,13 @@
                 <Label Text="{Binding VersionString}" 
                        Style="{StaticResource Label}" 
                        futures:VisualElement.FutureFlag="{StaticResource VersionFlag}" /> 
+            </Frame>
+            
+            <!-- Disabled Version -->
+            <Frame Grid.Row="9">
+                <Label Text="This feature is disabled until the app reaches version 9.9.9.9"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource FutureVersion}"/>
             </Frame>
             
         </Grid>

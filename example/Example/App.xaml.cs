@@ -22,7 +22,7 @@ namespace Example
                 
                 // here you can override how your application will acquire "UtcNow"
                 // using nodatime to acquire "UtcNow"
-                config.UtcNowProvider(GetNodaUtcNow); 
+                config.UtcNowProvider(GetNodaUtcNow);
             });
             
             MainPage = new MainPage();

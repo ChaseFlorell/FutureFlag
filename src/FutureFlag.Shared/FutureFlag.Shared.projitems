@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Base\DateFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\VersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BetweenDatesFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\InvalidAppVersionException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FutureFlagConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrAfterDateFutureFlag.cs" />
