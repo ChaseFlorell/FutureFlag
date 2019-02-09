@@ -14,8 +14,8 @@
 
     <ItemGroup>
         <PackageReference Include="MSBuild.Sdk.Extras" Version="1.6.60" PrivateAssets="All" />
-        <PackageReference Include="System.Json" Version="4.5.0" />
-        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+        <PackageReference Include="System.Json" Version="4.4.0" />
+        <PackageReference Include="System.Net.Http" Version="4.0.0" />
     </ItemGroup>    
     
     <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
