@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Exceptions\InvalidAppVersionException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FutureFlagConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonRestFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrAfterDateFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrBeforeDateFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SimpleFutureFlag.cs" />

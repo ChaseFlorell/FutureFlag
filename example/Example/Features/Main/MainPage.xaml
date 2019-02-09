@@ -31,6 +31,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
             <!-- All -->
@@ -101,6 +103,20 @@
                 <Label Text="This feature is disabled until the app reaches version 9.9.9.9"
                        Style="{StaticResource Label}"
                        futures:VisualElement.FutureFlag="{StaticResource FutureVersion}"/>
+            </Frame>
+            
+            <!-- Enabled Rest -->
+            <Frame Grid.Row="10">
+                <Label Text="This feature is enabled from a REST call"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource TrueRest}"/>
+            </Frame>
+            
+            <!-- Disabled Rest -->
+            <Frame Grid.Row="11">
+                <Label Text="This feature is disabled from a REST call"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource FalseRest}"/>
             </Frame>
             
         </Grid>

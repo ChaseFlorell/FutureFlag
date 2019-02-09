@@ -29,7 +29,7 @@ namespace FutureFlag.Internal
 
             var trigger = new DataTrigger(objectTypeToApplyTheTriggerTo)
             {
-                Binding = new Binding(nameof(IFutureFlag.IsEnabled), BindingMode.OneTime, source: featureFlag), 
+                Binding = new Binding(nameof(IFutureFlag.IsEnabled), source: featureFlag), 
                 Value = featureFlagStateThatAppliesTheSetterValue
             };
             

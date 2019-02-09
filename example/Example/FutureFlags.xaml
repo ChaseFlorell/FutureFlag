@@ -12,6 +12,16 @@
     <featureFlag:OnOrAfterDateFutureFlag  x:Key="AfterThatsFalse"  Date="01-Jan-2040 18:00:00" />
     <featureFlag:OnOrBeforeDateFutureFlag x:Key="BeforeThatsFalse" Date="01-Jan-2018 18:00:00" />
     <featureFlag:VersionFutureFlag        x:Key="FutureVersion"    Version="9.9.9.9"/>
+    <featureFlag:JsonRestFutureFlag       x:Key="TrueRest">
+        <x:Arguments>
+            <x:String>https://my-json-server.typicode.com/chaseflorell/futureflag/trueEnabled</x:String>
+        </x:Arguments>
+    </featureFlag:JsonRestFutureFlag>
+    <featureFlag:JsonRestFutureFlag       x:Key="FalseRest">
+        <x:Arguments>
+            <x:String>https://my-json-server.typicode.com/chaseflorell/futureflag/falseEnabled</x:String>
+        </x:Arguments>
+    </featureFlag:JsonRestFutureFlag>
     
     <featureFlag:VersionFutureFlag        x:Key="VersionFlag" >
         <featureFlag:VersionFutureFlag.Version>
