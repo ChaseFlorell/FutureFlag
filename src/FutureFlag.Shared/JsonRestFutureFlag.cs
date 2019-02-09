@@ -8,12 +8,27 @@ using Xamarin.Forms;
 
 namespace FutureFlag
 {
+    /// <summary>
+    /// Defines a <see cref="IFutureFlag"/> that checks an API for <see cref="p:IFutureFlag.IsEnabled"/>
+    /// </summary>
+    /// <remarks>The result can return any json response, but MUST have a property called <c>isEnabled</c></remarks>
+    /// <example>
+    ///<![CDATA[
+    /// {
+    ///    "isEnabled": true
+    /// }
+    /// ]]>
+    /// </example>
 #if XAMARIN_FORMS
     public class JsonRestFutureFlag : BindableObject, IFutureFlag
 #else
     public class JsonRestFutureFlag : IFutureFlag
 #endif
     {
+        
+        private static readonly HttpClient _client = new HttpClient();
+        private string _url;
+        
 #if XAMARIN_FORMS
         public static readonly BindablePropertyKey IsEnabledProperty = BindableProperty.CreateReadOnly(nameof(IsEnabled),
             typeof(bool),
@@ -31,26 +46,26 @@ namespace FutureFlag
         public bool IsEnabled { get; private set; }
 #endif
 
-        public string Url { get; }
-
-        private static readonly HttpClient _client = new HttpClient();
-
         /// <summary>
-        /// Defines a <see cref="IFutureFlag"/> that checks an API for <see cref="p:IFutureFlag.IsEnabled"/>
+        /// The API endpoint to check for <see cref="p:IFutureFlag.IsEnabled"/>
         /// </summary>
-        /// <param name="url">The url to check feature availability</param>
-        /// <remarks>The result can return any json response, but MUST have a property called <c>isEnabled</c></remarks>
-        /// <example>
-        ///<![CDATA[
-        /// {
-        ///    "isEnabled": true
-        /// }
-        /// ]]>
-        /// </example>
-        public JsonRestFutureFlag(string url)
+        /// <remarks><see cref="p:IFutureFlag.IsEnabled"/> is checked as soon as <see cref="Url"/> is set. Since the request is asynchronous, there will be a delay waiting for the response.</remarks>
+        public string Url
         {
-            Url = url;
-            CheckIsEnabled(Url);
+            get => _url;
+            set
+            {
+                _url = value;
+                CheckIsEnabled(_url);
+            }
+        }
+
+        protected virtual void HandleDeserializationException(Exception ex)
+        {
+        }
+
+        protected virtual void HandleFailedResponse(HttpResponseMessage response)
+        {
         }
 
         private void CheckIsEnabled(string url)
@@ -77,14 +92,6 @@ namespace FutureFlag
                     HandleFailedResponse(response);
                 }
             });
-        }
-
-        protected virtual void HandleDeserializationException(Exception ex)
-        {
-        }
-
-        protected virtual void HandleFailedResponse(HttpResponseMessage response)
-        {
         }
     }
 }
