@@ -36,6 +36,7 @@ ProjectSection(SolutionItems) = preProject
 	build.ps1 = build.ps1
 	readme.md = readme.md
 	db.json = db.json
+	appveyor.yml = appveyor.yml
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FutureFlag.Tests", "tests\FutureFlag.Tests\FutureFlag.Tests.csproj", "{5C3794D6-D60D-4824-A16E-D1F1A604AA64}"

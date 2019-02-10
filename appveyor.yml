@@ -1,0 +1,52 @@
+-
+  version: '{build}'
+  branches:
+    only:
+      - development
+  image: Visual Studio 2017
+  init:
+    - ps: Update-AppveyorBuild -Version "$(Get-Date -format yyyy.M).$env:appveyor_build_number"
+  dotnet_csproj:
+    patch: true
+    file: '**\Directory.Build.props'
+    version: '{version}-pre'
+    package_version: '{version}-pre'
+    assembly_version: '{version}'
+    file_version: '{version}'
+    informational_version: '{version}-pre'
+  environment:
+    CAKE_SETTINGS_SKIPPACKAGEVERSIONCHECK: true
+  build_script:
+    - ps: ./build
+  artifacts:
+    - path: '**\FutureFlag.*.nupkg'
+  deploy:
+    - provider: NuGet
+      api_key:
+        secure: YHSRxhHHN8gHbxAPSqK73zlaSq0hFNlQf7W63ahXBVn8Y6H57nOriL7GDPaESW6Y
+-
+  version: '{build}'
+  branches:
+    only:
+      - master
+  image: Visual Studio 2017
+  init:
+    - ps: Update-AppveyorBuild -Version "$(Get-Date -format yyyy.M).$env:appveyor_build_number"
+  dotnet_csproj:
+    patch: true
+    file: '**\Directory.Build.props'
+    version: '{version}'
+    package_version: '{version}'
+    assembly_version: '{version}'
+    file_version: '{version}'
+    informational_version: '{version}'
+  environment:
+    CAKE_SETTINGS_SKIPPACKAGEVERSIONCHECK: true
+  build_script:
+    - ps: ./build
+  artifacts:
+    - path: '**\FutureFlag.*.nupkg'
+  deploy:
+    - provider: NuGet
+      api_key:
+        secure: YHSRxhHHN8gHbxAPSqK73zlaSq0hFNlQf7W63ahXBVn8Y6H57nOriL7GDPaESW6Y
