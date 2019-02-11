@@ -25,19 +25,19 @@ namespace FutureFlag
         public TimeSpan CacheDuration { get; set; }
 
         ///<inheritdoc cref="IFutureFlag.IsEnabled"/>
-        public bool IsEnabled => DateTime.Now >= _checkTime.Add(CacheDuration) 
+        public bool IsEnabled => DateTime.UtcNow >= _checkTime.Add(CacheDuration) 
             ? UpdateCheckTimeAndReturnFlagValue() 
             : _cachedValue;
 
         private bool UpdateCheckTimeAndReturnFlagValue()
         {
-            if(FutureFlag is null)
+            if(FutureFlag == default)
                 throw new InvalidOperationException($"You must provide an {nameof(IFutureFlag)} when using a {nameof(CachedFutureFlagProvider)}");
             
-            if(CacheDuration == default(TimeSpan))
+            if(CacheDuration == default)
                 throw new InvalidOperationException($"You must provide a {nameof(CacheDuration)} when using a {nameof(CachedFutureFlagProvider)}");
-            
-            _checkTime = DateTime.Now;
+
+            _checkTime = DateTime.UtcNow;
             return _cachedValue = FutureFlag.IsEnabled;
         }
     }
