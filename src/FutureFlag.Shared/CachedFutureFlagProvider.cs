@@ -12,11 +12,9 @@ namespace FutureFlag
 #endif
     public class CachedFutureFlagProvider : IFutureFlag
     {
-        private Cached<bool> _temp;
-        private bool _validated;
-        
-        private Cached<bool> Temp => _temp ?? (_temp = new Cached<bool>(UpdateCheckTimeAndReturnFlagValue, CacheDuration)); 
-        
+        private Cached<bool> _temp;        
+        private Cached<bool> Temp => _temp ?? (_temp = new Cached<bool>(ValidateAndReturnIsEnabled, CacheDuration));
+
         /// <summary>
         /// Future Flag to cache
         /// </summary>
@@ -30,14 +28,7 @@ namespace FutureFlag
         ///<inheritdoc cref="IFutureFlag.IsEnabled"/>
         public bool IsEnabled => Temp.Value;
 
-        private bool UpdateCheckTimeAndReturnFlagValue()
-        {
-            if (!_validated) ValidateProperties();
-
-            return FutureFlag.IsEnabled;
-        }
-
-        private void ValidateProperties()
+        private bool ValidateAndReturnIsEnabled()
         {
             if(FutureFlag == default)
                 throw new InvalidOperationException($"You must provide an {nameof(IFutureFlag)} when using a {nameof(CachedFutureFlagProvider)}");
@@ -45,7 +36,7 @@ namespace FutureFlag
             if(CacheDuration == default)
                 throw new InvalidOperationException($"You must provide a {nameof(CacheDuration)} when using a {nameof(CachedFutureFlagProvider)}");
             
-            _validated = true;
+            return FutureFlag.IsEnabled;
         }
     }
 }
