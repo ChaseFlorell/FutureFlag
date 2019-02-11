@@ -8,7 +8,7 @@
              xmlns:futures="clr-namespace:FutureFlag;assembly=FutureFlag.Forms"
              ios:Page.UseSafeArea="true"
              BackgroundColor="LightGray">
-    
+
     <ContentPage.BindingContext>
         <main:MainPageViewModel />
     </ContentPage.BindingContext>
@@ -19,106 +19,113 @@
                 <!-- composite related rows -->
                 <RowDefinition Height="{futures:GridLengthForFutureFlag AllFlag, GridLength=*}" /> <!-- this row is hidden -->
                 <RowDefinition Height="{futures:GridLengthForFutureFlag AnyFlag, GridLength=*}" />
-                
+
                 <!-- simple row -->
                 <RowDefinition Height="*" />
-                
+
                 <!-- date related rows -->
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
+
             <!-- All -->
-            <Frame Grid.Row="0" >
-                <Label Text="This feature is available when ALL conditions are true within the composite declaration" 
-                       Style="{StaticResource Label}" 
-                       futures:VisualElement.FutureFlag="{StaticResource AllFlag}"/> 
+            <Frame Grid.Row="0">
+                <Label Text="This feature is available when ALL conditions are true within the composite declaration"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource AllFlag}" />
             </Frame>
-            
+
             <!-- Any -->
             <Frame Grid.Row="1" BackgroundColor="{futures:ColorFutureFlag AnyFlag, TrueValue=Yellow, FalseValue=Red}">
                 <Label futures:VisualElement.FutureFlag="{StaticResource AnyFlag}"
-                       Text="This feature is available when ANY feature is true within the composite declaration" 
-                       Style="{futures:StyleFutureFlag AnyFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
+                       Text="This feature is available when ANY feature is true within the composite declaration"
+                       Style="{futures:StyleFutureFlag AnyFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" />
             </Frame>
-            
+
             <!-- Simple -->
             <Frame Grid.Row="2" BackgroundColor="{futures:ColorFutureFlag SimpleFlag, TrueValue=Lime, FalseValue=Teal}">
                 <Label futures:VisualElement.FutureFlag="{StaticResource SimpleFlag}"
-                       Text="This feature is available with a simple boolean toggle" 
-                       Style="{futures:StyleFutureFlag SimpleFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" /> 
+                       Text="This feature is available with a simple boolean toggle"
+                       Style="{futures:StyleFutureFlag SimpleFlag, TrueValue={StaticResource AnyText}, FalseValue={StaticResource AllText}}" />
             </Frame>
-            
+
             <!-- Before True -->
-            <Frame Grid.Row="3" >
-                <Label Text="This feature is available any time before January 1st 2040 at 6pm" 
-                       Style="{StaticResource Label}" 
-                       futures:VisualElement.FutureFlag="{StaticResource BeforeThatsTrue}" /> 
+            <Frame Grid.Row="3">
+                <Label Text="This feature is available any time before January 1st 2040 at 6pm"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource BeforeThatsTrue}" />
             </Frame>
-            
+
             <!-- Before False -->
-            <Frame Grid.Row="4" >
-                <Label Text="This feature is available any time before January 1st 2018 at 6pm" 
-                       Style="{StaticResource Label}" 
-                       futures:VisualElement.FutureFlag="{StaticResource BeforeThatsFalse}" /> 
+            <Frame Grid.Row="4">
+                <Label Text="This feature is available any time before January 1st 2018 at 6pm"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource BeforeThatsFalse}" />
             </Frame>
-            
+
             <!-- After True -->
-            <Frame Grid.Row="5" >
-                <Label Text="This feature is available any time after January 1st 2018 at 6pm" 
-                       Style="{StaticResource Label}" 
-                       futures:VisualElement.FutureFlag="{StaticResource AfterThatsTrue}"/> 
+            <Frame Grid.Row="5">
+                <Label Text="This feature is available any time after January 1st 2018 at 6pm"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource AfterThatsTrue}" />
             </Frame>
-            
+
             <!-- After False -->
-            <Frame Grid.Row="6" >
-                <Label Text="This feature is available any time after January 1st 2040 at 6pm" 
-                       Style="{StaticResource Label}" 
-                       futures:VisualElement.FutureFlag="{StaticResource AfterThatsFalse}" /> 
+            <Frame Grid.Row="6">
+                <Label Text="This feature is available any time after January 1st 2040 at 6pm"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource AfterThatsFalse}" />
             </Frame>
-            
+
             <!-- Simple with text toggle -->
-            <Frame Grid.Row="7" >
-                <Label Text="{futures:TextFutureFlag SimpleFlag, TrueValue='Flag is True', FalseValue='Flag is False'}" 
-                       Style="{StaticResource Label}" 
-                       futures:VisualElement.FutureFlag="{StaticResource SimpleFlag}" /> 
+            <Frame Grid.Row="7">
+                <Label Text="{futures:TextFutureFlag SimpleFlag, TrueValue='Flag is True', FalseValue='Flag is False'}"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource SimpleFlag}" />
             </Frame>
-            
+
             <!-- Version -->
-            <Frame Grid.Row="8" >
-                <Label Text="{Binding VersionString}" 
-                       Style="{StaticResource Label}" 
-                       futures:VisualElement.FutureFlag="{StaticResource VersionFlag}" /> 
+            <Frame Grid.Row="8">
+                <Label Text="{Binding VersionString}"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource VersionFlag}" />
             </Frame>
-            
+
             <!-- Disabled Version -->
             <Frame Grid.Row="9">
                 <Label Text="This feature is disabled until the app reaches version 9.9.9.9"
                        Style="{StaticResource Label}"
-                       futures:VisualElement.FutureFlag="{StaticResource FutureVersion}"/>
+                       futures:VisualElement.FutureFlag="{StaticResource FutureVersion}" />
             </Frame>
-            
+
             <!-- Enabled Rest -->
             <Frame Grid.Row="10">
                 <Label Text="This feature is enabled from a REST call"
                        Style="{StaticResource Label}"
-                       futures:VisualElement.FutureFlag="{StaticResource TrueRest}"/>
+                       futures:VisualElement.FutureFlag="{StaticResource TrueRest}" />
             </Frame>
-            
+
             <!-- Disabled Rest -->
             <Frame Grid.Row="11">
                 <Label Text="This feature is disabled from a REST call"
                        Style="{StaticResource Label}"
-                       futures:VisualElement.FutureFlag="{StaticResource FalseRest}"/>
+                       futures:VisualElement.FutureFlag="{StaticResource FalseRest}" />
             </Frame>
-            
+            <!-- Disabled Rest -->
+            <Frame Grid.Row="12">
+                <Label Text="This feature is cached for one minute"
+                       Style="{StaticResource Label}"
+                       futures:VisualElement.FutureFlag="{StaticResource CachedFutureFlagProvider}" />
+            </Frame>
+
         </Grid>
     </ScrollView>
 </ContentPage>

@@ -6,6 +6,9 @@ namespace FutureFlag
     /// Defines an <see cref="IFutureFlag"/> whereby we can cache the child Flag for a given duration
     /// </summary>
     /// <inheritdoc cref="IFutureFlag"/>
+#if XAMARIN_FORMS
+    [Xamarin.Forms.ContentProperty(nameof(FutureFlag))]
+#endif
     public class CachedFutureFlagProvider : IFutureFlag
     {
         private DateTime _checkTime;
