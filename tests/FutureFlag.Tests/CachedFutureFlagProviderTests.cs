@@ -36,7 +36,7 @@ namespace FutureFlag.Tests
                cacheProvider.IsEnabled.Should().BeTrue("even though we've set it to false, the true value is cached");
                loopCount++;
            }
-
+System.Threading.Thread.Sleep(100);
            loopCount.Should().BeGreaterThan(100, "the loop should execute many times in one second");
            cacheProvider.IsEnabled.Should().BeFalse("the cache has now expired and we should be picking up the new value");
         }
