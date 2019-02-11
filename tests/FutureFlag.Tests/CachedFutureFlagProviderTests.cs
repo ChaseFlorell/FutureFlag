@@ -31,7 +31,7 @@ namespace FutureFlag.Tests
            simpleFlag.SetupGet(x => x.IsEnabled).Returns(false);
            
            // assert
-           while (end > stamp)
+           while (end >= stamp)
            {
                stamp = DateTime.Now;
                cacheProvider.IsEnabled.Should().BeTrue("even though we've set it to false, the true value is cached");
