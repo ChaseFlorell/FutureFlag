@@ -11,7 +11,7 @@ namespace FutureFlag
 #endif
     public class CachedFutureFlagProvider : IFutureFlag
     {
-        private DateTime _checkTime;
+        private DateTime _checkTime = DateTime.MinValue;
         private bool _cachedValue;
         
         /// <summary>
@@ -25,9 +25,9 @@ namespace FutureFlag
         public TimeSpan CacheDuration { get; set; }
 
         ///<inheritdoc cref="IFutureFlag.IsEnabled"/>
-        public bool IsEnabled => DateTime.UtcNow >= _checkTime.Add(CacheDuration) 
-            ? UpdateCheckTimeAndReturnFlagValue() 
-            : _cachedValue;
+        public bool IsEnabled => DateTime.UtcNow < _checkTime.Add(CacheDuration) 
+            ? _cachedValue 
+            : UpdateCheckTimeAndReturnFlagValue();
 
         private bool UpdateCheckTimeAndReturnFlagValue()
         {
@@ -38,7 +38,8 @@ namespace FutureFlag
                 throw new InvalidOperationException($"You must provide a {nameof(CacheDuration)} when using a {nameof(CachedFutureFlagProvider)}");
 
             _checkTime = DateTime.UtcNow;
-            return _cachedValue = FutureFlag.IsEnabled;
+            _cachedValue = FutureFlag.IsEnabled;
+            return _cachedValue;
         }
     }
 }
