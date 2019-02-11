@@ -14,6 +14,7 @@
     <featureFlag:VersionFutureFlag        x:Key="FutureVersion"    Version="9.9.9.9"/>
     <featureFlag:JsonRestFutureFlag       x:Key="TrueRest"         Url="https://my-json-server.typicode.com/chaseflorell/futureflag/trueEnabled" />
     <featureFlag:JsonRestFutureFlag       x:Key="FalseRest"        Url="https://my-json-server.typicode.com/chaseflorell/futureflag/falseEnabled" />
+    <featureFlag:CachedFutureFlagProvider  x:Key="Cached"           CacheDuration="00:01:00"/>
     
     <featureFlag:VersionFutureFlag        x:Key="VersionFlag" >
         <featureFlag:VersionFutureFlag.Version>
