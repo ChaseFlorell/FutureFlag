@@ -1,4 +1,5 @@
 using System;
+using FutureFlag.Internal;
 
 namespace FutureFlag
 {
@@ -11,8 +12,10 @@ namespace FutureFlag
 #endif
     public class CachedFutureFlagProvider : IFutureFlag
     {
-        private DateTime _checkTime = DateTime.MinValue;
-        private bool _cachedValue;
+        private Cached<bool> _temp;
+        private bool _validated;
+        
+        private Cached<bool> Temp => _temp ?? (_temp = new Cached<bool>(UpdateCheckTimeAndReturnFlagValue, CacheDuration)); 
         
         /// <summary>
         /// Future Flag to cache
@@ -25,21 +28,24 @@ namespace FutureFlag
         public TimeSpan CacheDuration { get; set; }
 
         ///<inheritdoc cref="IFutureFlag.IsEnabled"/>
-        public bool IsEnabled => DateTime.UtcNow < _checkTime.Add(CacheDuration) 
-            ? _cachedValue 
-            : UpdateCheckTimeAndReturnFlagValue();
+        public bool IsEnabled => Temp.Value;
 
         private bool UpdateCheckTimeAndReturnFlagValue()
+        {
+            if (!_validated) ValidateProperties();
+
+            return FutureFlag.IsEnabled;
+        }
+
+        private void ValidateProperties()
         {
             if(FutureFlag == default)
                 throw new InvalidOperationException($"You must provide an {nameof(IFutureFlag)} when using a {nameof(CachedFutureFlagProvider)}");
             
             if(CacheDuration == default)
                 throw new InvalidOperationException($"You must provide a {nameof(CacheDuration)} when using a {nameof(CachedFutureFlagProvider)}");
-
-            _checkTime = DateTime.UtcNow;
-            _cachedValue = FutureFlag.IsEnabled;
-            return _cachedValue;
+            
+            _validated = true;
         }
     }
 }
