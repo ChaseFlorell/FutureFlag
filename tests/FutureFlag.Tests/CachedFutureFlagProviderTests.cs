@@ -14,11 +14,10 @@ namespace FutureFlag.Tests
            // setup
            const int secondsToTest = 1;
            var loopCount = 0;
-           var simpleFlag = new Mock<IFutureFlag>();
-           simpleFlag.SetupGet(x => x.IsEnabled).Returns(true);
+           var simpleFlag = new SimpleFutureFlag{IsEnabled = true};
            var cacheProvider = new CachedFutureFlagProvider
            {
-               FutureFlag = simpleFlag.Object,
+               FutureFlag = simpleFlag,
                CacheDuration = TimeSpan.FromSeconds(secondsToTest)
            };
            var stamp = DateTime.Now;
@@ -28,7 +27,7 @@ namespace FutureFlag.Tests
            cacheProvider.IsEnabled.Should().BeTrue("We manually set IsEnabled to true");
            
            // execute
-           simpleFlag.SetupGet(x => x.IsEnabled).Returns(false);
+           simpleFlag.IsEnabled = false;
            
            // assert
            while (end >= stamp)
@@ -38,7 +37,7 @@ namespace FutureFlag.Tests
                loopCount++;
            }
 
-           loopCount.Should().BeGreaterThan(100, because: "the loop should execute many times in one second");
+           loopCount.Should().BeGreaterThan(100, "the loop should execute many times in one second");
            cacheProvider.IsEnabled.Should().BeFalse("the cache has now expired and we should be picking up the new value");
         }
 
