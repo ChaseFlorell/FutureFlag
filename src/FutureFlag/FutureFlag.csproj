@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>        
-        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid80;MonoAndroid81;net452</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid81;MonoAndroid90;net452</TargetFrameworks>
         <LangVersion>latest</LangVersion>
         <AssemblyName>FutureFlag</AssemblyName>
         <PackageId>FutureFlag</PackageId>
@@ -21,11 +21,11 @@
     <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <!-- Android specific includes -->
     </ItemGroup>
+    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid90')) ">
+        <!-- Android 9.0 specific includes -->
+    </ItemGroup>
     <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid81')) ">
         <!-- Android 8.1 specific includes -->
-    </ItemGroup>
-    <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid80')) ">
-        <!-- Android 8.0 specific includes -->
     </ItemGroup>
     <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
         <!-- iOS specific includes -->
