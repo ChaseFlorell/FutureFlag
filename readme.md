@@ -45,6 +45,9 @@ Use the attached property to attach a future toggle to a VisualElement
        featureFlag:VisualElement.FutureFlag="{StaticResource FutureVersion}"/>
 ```
 
+### Accolades
+Attribution to [Jason Roberts][jason-roberts] and his work on [FeatureToggle][feature-toggle], as it's what got me started.
+
 [flag]: https://img.shields.io/nuget/v/futureflag.svg?style=flat-square&label=nuget&logo=nuget
 [flag-pre]: https://img.shields.io/nuget/vpre/futureflag.svg?style=flat-square&label=nuget-pre&logo=nuget
 [flag-link]: https://www.nuget.org/packages/FutureFlag/
@@ -55,6 +58,8 @@ Use the attached property to attach a future toggle to a VisualElement
 [master-build]:https://ci.appveyor.com/project/ChaseFlorell/futureflag
 [development]: https://img.shields.io/appveyor/ci/chaseflorell/futureflag/development.svg?style=flat-square&label=development&logo=appveyor
 [development-build]: https://ci.appveyor.com/project/ChaseFlorell/futureflag/branch/development
+[feature-toggle]: https://github.com/jason-roberts/FeatureToggle
+[jason-roberts]: https://twitter.com/robertsjason
 
 
 
