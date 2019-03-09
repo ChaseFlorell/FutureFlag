@@ -1,17 +1,17 @@
-#FutureToggle
+# FutureToggle
 Simple cross platform feature toggles build for various flavours of .net
 
-#FutureToggle.Forms
+# FutureToggle.Forms
 .netstandard feature toggles and also Xamarin Forms specific extensions
 
-##Releases
+## Releases
 
 |                  |  Release                     |  Pre-Release                                        |
 | ---------------- | ---------------------------: |  -------------------------------------------------: |
 | Build | [![Build status][master]][master-build] | [![Build status][development]][development-build]   |
 | Artifact       | [![nuget][flag]][flag-link]    | [![nuget-pre][flag-pre]][flag-link]                 |
 
-##Feature Flags
+## Feature Flags
  - All - A composite flag that toggles only when all children are enabled
  - Any - A composite flag that toggles when any single child is enabled
  - AlwaysOff - IsEnabled = false
@@ -27,7 +27,7 @@ Simple cross platform feature toggles build for various flavours of .net
  
  _note: you can create any custom Future Flag you like by using the `IFutureFlag` interface_
 
-##Xamarin Forms
+## Xamarin Forms
 declare your Future Flag via xaml
 ```xml
 <Page xmlns:futureFlag="http://github.com/chaseflorell/futureflag">
