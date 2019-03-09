@@ -1,8 +1,8 @@
-# FutureToggle
-Simple cross platform feature toggles build for various flavours of .net
+# FutureFlag
+Simple cross platform feature flags build for various flavours of .net
 
-# FutureToggle.Forms
-.netstandard feature toggles and also Xamarin Forms specific extensions
+# FutureFlag.Forms
+.netstandard feature flags and also Xamarin Forms specific extensions
 
 ## Releases
 
@@ -12,8 +12,8 @@ Simple cross platform feature toggles build for various flavours of .net
 | Artifact       | [![nuget][flag]][flag-link]    | [![nuget-pre][flag-pre]][flag-link]                 |
 
 ## Feature Flags
- - All - A composite flag that toggles only when all children are enabled
- - Any - A composite flag that toggles when any single child is enabled
+ - All - A composite flag that enables when all children are enabled
+ - Any - A composite flag that enables when any single child is enabled
  - AlwaysOff - IsEnabled = false
  - AlwaysOn - IsEnabled = true
  - JsonRest - IsEnabled when a JSON response comes back `{isEnabled : true|false}`
@@ -39,7 +39,7 @@ declare your Future Flag via xaml
   </Page.Resources>
 </Page>
 ```
-Use the attached property to attach a future toggle to a VisualElement
+Use the attached property to attach a future flag to a VisualElement
 ```xml
 <Label Text="I'm only visible on or after version 1.3" 
        featureFlag:VisualElement.FutureFlag="{StaticResource FutureVersion}"/>
