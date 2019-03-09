@@ -23,6 +23,10 @@ namespace Example
                 // here you can override how your application will acquire "UtcNow"
                 // using nodatime to acquire "UtcNow"
                 config.UtcNowProvider(GetNodaUtcNow);
+
+                // here you can override an exact version to override all version checks
+                // this is particularly useful for development. Just set this to your predefined dev version. 
+                config.SetIsEnabledForExactVersion("0.0.0.1");
             });
             
             MainPage = new MainPage();

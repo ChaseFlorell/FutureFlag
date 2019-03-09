@@ -52,7 +52,7 @@ namespace FutureFlag
         /// <summary>Indicates an exact version you want to set <see cref="p:IFutureFlag.IsEnabled"/> = <c>true</c> for.</summary>
         /// <param name="version">A <see cref="System.String"/> representation of the version</param>
         /// <remarks>This is useful for development purposes in order to ensure you can see future features</remarks>
-        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the IsEnabled version more than once</exception>
+        /// <exception cref="InvalidOperationException">Thrown when a user tries to set the IsEnabled for exact version more than once</exception>
         /// <exception cref="InvalidAppVersionException">Thrown when you specify <c>null</c> or <c>default(Version)</c></exception>
         public FutureFlagConfiguration SetIsEnabledForExactVersion(string version) 
             => SetIsEnabledForExactVersion(new Version(version));
@@ -60,10 +60,12 @@ namespace FutureFlag
         /// <summary>Indicates an exact version you want to set <see cref="p:IFutureFlag.IsEnabled"/> = <c>true</c> for.</summary>
         /// <param name="version">A <see cref="System.Version"/> representation of the version</param>
         /// <remarks>This is useful for development purposes in order to ensure you can see future features</remarks>
-        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the IsEnabled version more than once</exception>
+        /// <exception cref="InvalidOperationException">Thrown when a user tries to set the IsEnabled for exact version more than once</exception>
         /// <exception cref="InvalidAppVersionException">Thrown when you specify <c>null</c> or <c>default(Version)</c></exception>
         public FutureFlagConfiguration SetIsEnabledForExactVersion(Version version)
         {
+            if(version == default)
+                throw new InvalidAppVersionException("You must specify an actual version to enable.");
             AssertConfiguration();
             Base.VersionHelper.SetIsEnabledForExactVersion(version);
             return this;
