@@ -37,19 +37,15 @@ namespace FutureFlag
             return this;
         }
 
-        /// <summary>Overrides the way the library acquires the current running version</summary>
-        /// <param name="version">A <see cref="System.String"/> representation of the version</param>
-        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the app version more than once</exception>
-        public FutureFlagConfiguration OverrideAppVersion(string version) 
-            => OverrideAppVersion(new Version(version));
-
-        /// <summary>Overrides the way the library acquires the current running version</summary>
-        /// <param name="version">A <see cref="System.Version"/> representation of the version</param>
-        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the app version more than once</exception>
-        public FutureFlagConfiguration OverrideAppVersion(Version version)
+        /// <summary>
+        /// Overrides how the FutureFlag configuration finds you app version.
+        /// </summary>
+        /// <param name="versionProvider">Provider used to determine app version</param>
+        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the Version provider more than once</exception>
+        public FutureFlagConfiguration VersionProvider(Func<Version> versionProvider)
         {
             AssertConfiguration();
-            Base.VersionHelper.OverrideVersion(version);
+            Base.VersionHelper.VersionProvider(versionProvider);
             return this;
         }
 

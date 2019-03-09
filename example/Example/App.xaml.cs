@@ -18,7 +18,7 @@ namespace Example
             {
                 // here you can override how your application will acquire "Now"
                 // using nodatime to acquire "Now"
-                config.NowProvider(GetNodaNow); 
+                config.NowProvider(GetNodaNow);
                 
                 // here you can override how your application will acquire "UtcNow"
                 // using nodatime to acquire "UtcNow"

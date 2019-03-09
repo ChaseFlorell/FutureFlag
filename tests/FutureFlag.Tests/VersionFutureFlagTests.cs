@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -12,7 +13,8 @@ namespace FutureFlag.Tests
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            FutureFlagConfiguration.Configure(cfg => cfg.OverrideAppVersion("1.0.0.0"));
+            Version VersionProvider() => new Version("1.0.0.0");
+            FutureFlagConfiguration.Configure(cfg => cfg.VersionProvider(VersionProvider));
         }
         
         [SetUp]
@@ -24,6 +26,7 @@ namespace FutureFlag.Tests
         [Test]
         public void ShouldDisableFeatureWhenExecutingAssemblyIsOlder()
         {
+            
             // setup
             _versionFutureFlag.Version = "2.0.0.0";
             

@@ -22,9 +22,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)FutureFlagConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\Cached(T).cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Is.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JsonRestFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrAfterDateFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OnOrBeforeDateFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RandomFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SimpleFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VersionFutureFlag.cs" />
   </ItemGroup>
