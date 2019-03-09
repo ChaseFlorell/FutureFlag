@@ -6,10 +6,11 @@ Simple cross platform feature flags build for various flavours of .net
 
 ## Releases
 
-|                  |  Release                     |  Pre-Release                                        |
-| ---------------- | ---------------------------: |  -------------------------------------------------: |
-| Build | [![Build status][master]][master-build] | [![Build status][development]][development-build]   |
-| Artifact       | [![nuget][flag]][flag-link]    | [![nuget-pre][flag-pre]][flag-link]                 |
+|                  |  Release                          |  Pre-Release                                |
+| ---------------- | --------------------------------: |  -----------------------------------------: |
+| Build            | [![status][master]][master-build] | [![status][development]][development-build] |
+| FutureFlag       | [![nuget][flag]][flag-link]       | [![nuget-pre][flag-pre]][flag-link]         |
+| FutureFlag.Forms | [![nuget][forms]][forms-link]     | [![nuget-pre][forms-pre]][forms-link]       |
 
 ## Feature Flags
  - All - A composite flag that enables when all children are enabled
@@ -51,13 +52,17 @@ Attribution to [Jason Roberts][jason-roberts] and his work on [FeatureToggle][fe
 [flag]: https://img.shields.io/nuget/v/futureflag.svg?style=flat-square&label=nuget&logo=nuget
 [flag-pre]: https://img.shields.io/nuget/vpre/futureflag.svg?style=flat-square&label=nuget-pre&logo=nuget
 [flag-link]: https://www.nuget.org/packages/FutureFlag/
+
 [forms]: https://img.shields.io/nuget/v/futureflag.forms.svg?style=flat-square&label=nuget&logo=nuget
 [forms-pre]: https://img.shields.io/nuget/vpre/futureflag.forms.svg?style=flat-square&label=nuget-pre&logo=nuget
 [forms-link]: https://www.nuget.org/packages/FutureFlag.Forms/
+
 [master]: https://img.shields.io/appveyor/ci/chaseflorell/futureflag/master.svg?style=flat-square&label=master&logo=appveyor
 [master-build]:https://ci.appveyor.com/project/ChaseFlorell/futureflag
+
 [development]: https://img.shields.io/appveyor/ci/chaseflorell/futureflag/development.svg?style=flat-square&label=development&logo=appveyor
 [development-build]: https://ci.appveyor.com/project/ChaseFlorell/futureflag/branch/development
+
 [feature-toggle]: https://github.com/jason-roberts/FeatureToggle
 [jason-roberts]: https://twitter.com/robertsjason
 
