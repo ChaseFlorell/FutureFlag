@@ -17,12 +17,16 @@ namespace Example
             FutureFlagConfiguration.Configure(config =>
             {
                 // here you can override how your application will acquire "Now"
-                // using nodatime to acquire "Now"
+                // using NodaTime to acquire "Now"
                 config.NowProvider(GetNodaNow);
                 
                 // here you can override how your application will acquire "UtcNow"
-                // using nodatime to acquire "UtcNow"
+                // using NodaTime to acquire "UtcNow"
                 config.UtcNowProvider(GetNodaUtcNow);
+
+                // here you can override whether your application will
+                // look at "Now" or "UtcNow" by default
+                config.UseUtcByDefault(true);
 
 #if DEBUG
                 // here you can override an exact version to override all version checks

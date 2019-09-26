@@ -70,6 +70,17 @@ namespace FutureFlag
             Base.VersionHelper.SetIsEnabledForExactVersion(version);
             return this;
         }
+
+        /// <summary>
+        /// Indicates if Future Flags dealing with Dates should use UTC by default
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the Version provider more than once</exception>
+        public FutureFlagConfiguration UseUtcByDefault(bool useUtc)
+        {
+            AssertConfiguration();
+            DateFutureFlag.UseUtcByDefault(useUtc);
+            return this;        
+        }
         
         /// <summary>
         /// Invokes the configuration, this can only be run once
