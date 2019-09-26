@@ -11,7 +11,7 @@ namespace FutureFlag.Base
         internal static void SetNowProvider(Func<DateTime> provider) => _nowProvider = provider;
 
         protected DateTime UtcNow => _utcNowProvider?.Invoke() ?? DateTime.UtcNow;
-        protected DateTime Now => _nowProvider?.Invoke() ?? DateTime.UtcNow;
+        protected DateTime Now => _nowProvider?.Invoke() ?? DateTime.Now;
         public bool UseUtc { get; set; } = false;
         public  CultureInfo CultureInfo { get; set; } = CultureInfo.CurrentUICulture;
         
