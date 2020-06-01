@@ -22,6 +22,7 @@
     - path: '**\FutureFlag.*.nupkg'
   deploy:
     - provider: NuGet
+      skip_symbols: true
       api_key:
         secure: NwLVBtSB1MOBBVr8+8PbmF94Ia+C4NxfmeF2ltWYpID28E0H++XqSscA7ZAyzc5Q
 -
@@ -48,5 +49,6 @@
     - path: '**\FutureFlag.*.nupkg'
   deploy:
     - provider: NuGet
+      skip_symbols: true
       api_key:
         secure: NwLVBtSB1MOBBVr8+8PbmF94Ia+C4NxfmeF2ltWYpID28E0H++XqSscA7ZAyzc5Q
