@@ -1,12 +1,11 @@
 using System;
+using FakeItEasy;
 using FluentAssertions;
-using Moq;
 using NUnit.Framework;
 
 namespace FutureFlag.Tests
 {
-    [TestFixture]
-    public class CachedFutureFlagProviderTests
+    public class CachedFutureFlagProviderTests : TestBase
     {
         [Test]
         public void ShouldCacheAFutureFlagValue()
@@ -44,10 +43,10 @@ namespace FutureFlag.Tests
         public void ShouldThrowInvalidOperationExceptionWhenMissingCacheDuration()
         {
             // setup
-            var mockFlag = new Mock<IFutureFlag>();
+            var mockFlag = A.Fake<IFutureFlag>();
             var cacheProvider = new CachedFutureFlagProvider
             {
-                FutureFlag = mockFlag.Object
+                FutureFlag = mockFlag
             };
             
             // execute

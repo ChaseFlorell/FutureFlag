@@ -5,24 +5,18 @@ using NUnit.Framework;
 
 namespace FutureFlag.Tests
 {
-    [TestFixture]
-    public class VersionFutureFlagTests
+    public class VersionFutureFlagTests : TestBase
     {
         private VersionFutureFlag _versionFutureFlag;
 
-        [OneTimeSetUp]
-        public void OneTimeSetUp()
-        {
-            Version VersionProvider() => new Version("1.0.0.0");
-            FutureFlagConfiguration.Configure(cfg => cfg.VersionProvider(VersionProvider));
-        }
-        
         [SetUp]
         public void SetUp()
         {
+            Version VersionProvider() => new Version("1.0.0.0");
+            FutureFlagConfiguration.Configure(cfg => cfg.VersionProvider(VersionProvider));
             _versionFutureFlag = new VersionFutureFlag();
         }
-        
+
         [Test]
         public void ShouldDisableFeatureWhenExecutingAssemblyIsOlder()
         {
@@ -33,7 +27,7 @@ namespace FutureFlag.Tests
             
             // assert
             _versionFutureFlag.IsEnabled.Should().BeFalse();
-            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetAssembly(typeof(VersionFutureFlagTests)).GetName().Version);
+            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetAssembly(typeof(VersionFutureFlagTests))?.GetName().Version);
         }
         
         [Test]
@@ -44,7 +38,7 @@ namespace FutureFlag.Tests
             
             // assert
             _versionFutureFlag.IsEnabled.Should().BeTrue();
-            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetAssembly(typeof(VersionFutureFlagTests)).GetName().Version);
+            _versionFutureFlag.ActualVersion.Should().Be(Assembly.GetAssembly(typeof(VersionFutureFlagTests))?.GetName().Version);
         }
     }
 }

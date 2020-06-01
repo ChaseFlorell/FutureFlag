@@ -104,6 +104,17 @@
             </summary>
             <value>The background color.</value>
         </member>
+        <member name="P:Cake.Core.CakeConsole.SupportAnsiEscapeCodes">
+            <summary>
+            Gets a value indicating whether or not the console supports ANSI escape codes.
+            </summary>
+        </member>
+        <member name="M:Cake.Core.CakeConsole.#ctor(Cake.Core.ICakeEnvironment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Core.CakeConsole"/> class.
+            </summary>
+            <param name="environment">The environment.</param>
+        </member>
         <member name="M:Cake.Core.CakeConsole.Write(System.String,System.Object[])">
             <summary>
             Writes the text representation of the specified array of objects to the
@@ -148,7 +159,7 @@
             Implementation of <see cref="T:Cake.Core.ICakeContext"/>.
             </summary>
         </member>
-        <member name="M:Cake.Core.CakeContext.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IGlobber,Cake.Core.Diagnostics.ICakeLog,Cake.Core.ICakeArguments,Cake.Core.IO.IProcessRunner,Cake.Core.IO.IRegistry,Cake.Core.Tooling.IToolLocator,Cake.Core.ICakeDataService)">
+        <member name="M:Cake.Core.CakeContext.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IGlobber,Cake.Core.Diagnostics.ICakeLog,Cake.Core.ICakeArguments,Cake.Core.IO.IProcessRunner,Cake.Core.IO.IRegistry,Cake.Core.Tooling.IToolLocator,Cake.Core.ICakeDataService,Cake.Core.Configuration.ICakeConfiguration)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.CakeContext"/> class.
             </summary>
@@ -161,6 +172,7 @@
             <param name="registry">The registry.</param>
             <param name="tools">The tool locator.</param>
             <param name="data">The data service.</param>
+            <param name="configuration">The cake configuration.</param>
         </member>
         <member name="P:Cake.Core.CakeContext.FileSystem">
             <summary>
@@ -229,6 +241,11 @@
         <member name="P:Cake.Core.CakeContext.Data">
             <summary>
             Gets the data context resolver.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.CakeContext.Configuration">
+            <summary>
+            Gets the cake configuration.
             </summary>
         </member>
         <member name="T:Cake.Core.CakeContextAdapter">
@@ -309,6 +326,11 @@
         <member name="P:Cake.Core.CakeContextAdapter.Data">
             <summary>
             Gets the data context resolver.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.CakeContextAdapter.Configuration">
+            <summary>
+            Gets the cake configuration.
             </summary>
         </member>
         <member name="T:Cake.Core.CakeEngine">
@@ -456,13 +478,12 @@
             </summary>
             <value>The runtime Cake is running in.</value>
         </member>
-        <member name="M:Cake.Core.CakeEnvironment.#ctor(Cake.Core.ICakePlatform,Cake.Core.ICakeRuntime,Cake.Core.Diagnostics.ICakeLog)">
+        <member name="M:Cake.Core.CakeEnvironment.#ctor(Cake.Core.ICakePlatform,Cake.Core.ICakeRuntime)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.CakeEnvironment" /> class.
             </summary>
             <param name="platform">The platform.</param>
             <param name="runtime">The runtime.</param>
-            <param name="log">The log.</param>
         </member>
         <member name="M:Cake.Core.CakeEnvironment.GetSpecialPath(Cake.Core.IO.SpecialPath)">
             <summary>
@@ -982,12 +1003,98 @@
             <param name="errorHandler">The error handler.</param>
             <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError(Cake.Core.CakeTaskBuilder,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
         <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError(Cake.Core.CakeTaskBuilder,System.Action{System.Exception})">
             <summary>
             Adds an error handler to be executed if an exception occurs in the task.
             </summary>
             <param name="builder">The builder.</param>
             <param name="errorHandler">The error handler.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError(Cake.Core.CakeTaskBuilder,System.Func{System.Exception,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError(Cake.Core.CakeTaskBuilder,System.Action{System.Exception,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError(Cake.Core.CakeTaskBuilder,System.Func{System.Exception,Cake.Core.ICakeContext,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder,System.Action{``0})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <typeparam name="TData">The extra data to operate with inside the error handler.</typeparam>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder,System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <typeparam name="TData">The extra data to operate with inside the error handler.</typeparam>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder,System.Action{System.Exception,``0})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <typeparam name="TData">The extra data to operate with inside the error handler.</typeparam>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder,System.Func{System.Exception,``0,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <typeparam name="TData">The extra data to operate with inside the error handler.</typeparam>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder,System.Action{System.Exception,Cake.Core.ICakeContext,``0})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <typeparam name="TData">The extra data to operate with inside the error handler.</typeparam>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder,System.Func{System.Exception,Cake.Core.ICakeContext,``0,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an error handler to be executed if an exception occurs in the task.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorHandler">The error handler.</param>
+            <typeparam name="TData">The extra data to operate with inside the error handler.</typeparam>
             <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
         <member name="M:Cake.Core.CakeTaskBuilderExtensions.Finally(Cake.Core.CakeTaskBuilder,System.Action)">
@@ -998,7 +1105,24 @@
             <param name="finallyHandler">The finally handler.</param>
             <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Finally(Cake.Core.CakeTaskBuilder,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Adds a finally handler to be executed after the task have finished executing.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="finallyHandler">The finally handler.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
         <member name="M:Cake.Core.CakeTaskBuilderExtensions.ReportError(Cake.Core.CakeTaskBuilder,System.Action{System.Exception})">
+            <summary>
+            Adds an error reporter for the task to be executed when an exception is thrown from the task.
+            This action is invoked before the error handler, but gives no opportunity to recover from the error.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="errorReporter">The finally handler.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.ReportError(Cake.Core.CakeTaskBuilder,System.Func{System.Exception,System.Threading.Tasks.Task})">
             <summary>
             Adds an error reporter for the task to be executed when an exception is thrown from the task.
             This action is invoked before the error handler, but gives no opportunity to recover from the error.
@@ -1128,6 +1252,17 @@
             <param name="action">The action.</param>
             <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``0}},System.Action{``0})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
         <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1})">
             <summary>
             Adds an action to be executed foreach item returned by the items function.
@@ -1153,6 +1288,137 @@
             <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
         <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder,System.Func{System.Collections.Generic.IEnumerable{``0}},System.Action{``0,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,System.Collections.Generic.IEnumerable{``1}},System.Action{``1,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,System.Collections.Generic.IEnumerable{``1}},System.Action{``1})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``1}},System.Action{``1,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{``0,Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``1}},System.Action{``1})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable{``0}},System.Action{``0,Cake.Core.ICakeContext})">
             <summary>
             Adds an action to be executed foreach item returned by the items function.
             This method will be executed the first time the task is executed.
@@ -1280,7 +1546,16 @@
             <param name="predicate">The criteria predicate.</param>
             <param name="message">The criteria message if skipped.</param>
         </member>
-        <member name="M:Cake.Core.CakeTaskExtensions.SetErrorHandler(Cake.Core.CakeTask,System.Action{System.Exception})">
+        <member name="M:Cake.Core.CakeTaskExtensions.SetErrorHandler(Cake.Core.CakeTask,System.Action{System.Exception,Cake.Core.ICakeContext})">
+            <summary>
+            Sets the task's error handler.
+            </summary>
+            <param name="task">The task.</param>
+            <param name="errorHandler">The error handler.</param>
+            <exception cref="T:Cake.Core.CakeException">There can only be one error handler per task.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="errorHandler"/> is null.</exception>
+        </member>
+        <member name="M:Cake.Core.CakeTaskExtensions.SetErrorHandler(Cake.Core.CakeTask,System.Func{System.Exception,Cake.Core.ICakeContext,System.Threading.Tasks.Task})">
             <summary>
             Sets the task's error handler.
             </summary>
@@ -1298,7 +1573,25 @@
             <exception cref="T:Cake.Core.CakeException">There can only be one error reporter per task.</exception>
             <exception cref="T:System.ArgumentNullException"><paramref name="errorReporter"/> is null.</exception>
         </member>
+        <member name="M:Cake.Core.CakeTaskExtensions.SetErrorReporter(Cake.Core.CakeTask,System.Func{System.Exception,System.Threading.Tasks.Task})">
+            <summary>
+            Sets the task's error reporter.
+            </summary>
+            <param name="task">The task.</param>
+            <param name="errorReporter">The error reporter.</param>
+            <exception cref="T:Cake.Core.CakeException">There can only be one error reporter per task.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="errorReporter"/> is null.</exception>
+        </member>
         <member name="M:Cake.Core.CakeTaskExtensions.SetFinallyHandler(Cake.Core.CakeTask,System.Action)">
+            <summary>
+            Sets the task's finally handler.
+            </summary>
+            <param name="task">The task.</param>
+            <param name="finallyHandler">The finally handler.</param>
+            <exception cref="T:Cake.Core.CakeException">There can only be one finally handler per task.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="finallyHandler"/> is null.</exception>
+        </member>
+        <member name="M:Cake.Core.CakeTaskExtensions.SetFinallyHandler(Cake.Core.CakeTask,System.Func{System.Threading.Tasks.Task})">
             <summary>
             Sets the task's finally handler.
             </summary>
@@ -1315,7 +1608,7 @@
             <param name="action">The action.</param>
             <exception cref="T:System.ArgumentNullException"><paramref name="action"/> is null.</exception>
         </member>
-        <member name="M:Cake.Core.CakeTaskExtensions.AddDelayedAction(Cake.Core.CakeTask,System.Action)">
+        <member name="M:Cake.Core.CakeTaskExtensions.AddDelayedAction(Cake.Core.CakeTask,System.Action{Cake.Core.ICakeContext})">
             <summary>
             Adds the action to the task's delayed actions.
             </summary>
@@ -1505,25 +1798,29 @@
             <param name="task">The task to skip.</param>
             <param name="criteria">The criteria that caused the task to be skipped.</param>
         </member>
-        <member name="M:Cake.Core.DefaultExecutionStrategy.ReportErrors(System.Action{System.Exception},System.Exception)">
+        <member name="M:Cake.Core.DefaultExecutionStrategy.ReportErrorsAsync(System.Func{System.Exception,System.Threading.Tasks.Task},System.Exception)">
             <summary>
             Executes the error reporter.
             </summary>
             <param name="action">The action.</param>
             <param name="exception">The exception.</param>
+            <returns>The awaitable task.</returns>
         </member>
-        <member name="M:Cake.Core.DefaultExecutionStrategy.HandleErrors(System.Action{System.Exception},System.Exception)">
+        <member name="M:Cake.Core.DefaultExecutionStrategy.HandleErrorsAsync(System.Func{System.Exception,Cake.Core.ICakeContext,System.Threading.Tasks.Task},System.Exception,Cake.Core.ICakeContext)">
             <summary>
             Executes the error handler.
             </summary>
             <param name="action">The action.</param>
             <param name="exception">The exception.</param>
+            <param name="context">The context.</param>
+            <returns>The awaitable task.</returns>
         </member>
-        <member name="M:Cake.Core.DefaultExecutionStrategy.InvokeFinally(System.Action)">
+        <member name="M:Cake.Core.DefaultExecutionStrategy.InvokeFinallyAsync(System.Func{System.Threading.Tasks.Task})">
             <summary>
             Invokes the finally handler.
             </summary>
             <param name="action">The action.</param>
+            <returns>The awaitable task.</returns>
         </member>
         <member name="M:Cake.Core.DefaultExecutionStrategy.PerformTaskSetup(System.Action{Cake.Core.ITaskSetupContext},Cake.Core.ITaskSetupContext)">
             <summary>
@@ -1541,7 +1838,7 @@
         </member>
         <member name="T:Cake.Core.Diagnostics.CakeBuildLog">
             <summary>
-            The default Cake build log.
+            A log that writes to the console.
             </summary>
         </member>
         <member name="P:Cake.Core.Diagnostics.CakeBuildLog.Verbosity">
@@ -1856,6 +2153,49 @@
             <param name="level">The log level.</param>
             <param name="logAction">The log action.</param>
         </member>
+        <member name="M:Cake.Core.Diagnostics.LogExtensions.QuietVerbosity(Cake.Core.Diagnostics.ICakeLog)">
+            <summary>
+            Sets the log verbosity to quiet and returns a disposable that restores the log verbosity on dispose.
+            </summary>
+            <param name="log">The log.</param>
+            <returns>A disposable that restores the log verbosity.</returns>
+        </member>
+        <member name="M:Cake.Core.Diagnostics.LogExtensions.MinimalVerbosity(Cake.Core.Diagnostics.ICakeLog)">
+            <summary>
+            Sets the log verbosity to minimal and returns a disposable that restores the log verbosity on dispose.
+            </summary>
+            <param name="log">The log.</param>
+            <returns>A disposable that restores the log verbosity.</returns>
+        </member>
+        <member name="M:Cake.Core.Diagnostics.LogExtensions.NormalVerbosity(Cake.Core.Diagnostics.ICakeLog)">
+            <summary>
+            Sets the log verbosity to normal and returns a disposable that restores the log verbosity on dispose.
+            </summary>
+            <param name="log">The log.</param>
+            <returns>A disposable that restores the log verbosity.</returns>
+        </member>
+        <member name="M:Cake.Core.Diagnostics.LogExtensions.VerboseVerbosity(Cake.Core.Diagnostics.ICakeLog)">
+            <summary>
+            Sets the log verbosity to verbose and returns a disposable that restores the log verbosity on dispose.
+            </summary>
+            <param name="log">The log.</param>
+            <returns>A disposable that restores the log verbosity.</returns>
+        </member>
+        <member name="M:Cake.Core.Diagnostics.LogExtensions.DiagnosticVerbosity(Cake.Core.Diagnostics.ICakeLog)">
+            <summary>
+            Sets the log verbosity to diagnostic and returns a disposable that restores the log verbosity on dispose.
+            </summary>
+            <param name="log">The log.</param>
+            <returns>A disposable that restores the log verbosity.</returns>
+        </member>
+        <member name="M:Cake.Core.Diagnostics.LogExtensions.WithVerbosity(Cake.Core.Diagnostics.ICakeLog,Cake.Core.Diagnostics.Verbosity)">
+            <summary>
+            Sets the log verbosity as specified and returns a disposable that restores the log verbosity on dispose.
+            </summary>
+            <param name="log">The log.</param>
+            <param name="verbosity">The verbosity.</param>
+            <returns>A disposable that restores the log verbosity.</returns>
+        </member>
         <member name="T:Cake.Core.Diagnostics.LogLevel">
             <summary>
             Represents a log level.
@@ -1948,6 +2288,23 @@
             This namespace contain types that
             enable you to implement custom logging support
             and interact with build logs.
+            </summary>
+        </member>
+        <member name="T:Cake.Core.Disposable">
+            <summary>
+            Disposable helper.
+            </summary>
+        </member>
+        <member name="M:Cake.Core.Disposable.Create(System.Action)">
+            <summary>
+            Creates an anonymous disposable with the specified disposer action.
+            </summary>
+            <param name="disposer">The disposer action.</param>
+            <returns>The anonymous disposable.</returns>
+        </member>
+        <member name="F:Cake.Core.Disposable.Empty">
+            <summary>
+            An empty disposable; does nothing.
             </summary>
         </member>
         <member name="T:Cake.Core.ExecutionSettings">
@@ -2642,12 +2999,36 @@
             <param name="path">The working directory for the process to be started.</param>
             <returns>The same <see cref="T:Cake.Core.IO.ProcessSettings"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.ProcessSettingsExtensions.SetRedirectStandardOutput(Cake.Core.IO.ProcessSettings,System.Boolean)">
+        <member name="M:Cake.Core.ProcessSettingsExtensions.SetRedirectedStandardOutputHandler(Cake.Core.IO.ProcessSettings,System.Func{System.String,System.String})">
             <summary>
-            Sets a value indicating whether the output of an application is written to the <see cref="P:System.Diagnostics.Process.StandardOutput"/> stream.
+            Sets a function that intercepts the standard output before being redirected. Use in conjunction with <see cref="P:Cake.Core.IO.ProcessSettings.RedirectStandardOutput"/>
             </summary>
             <param name="settings">The process settings.</param>
-            <param name="redirect">true if output should be written to <see cref="P:System.Diagnostics.Process.StandardOutput"/>; otherwise, false. The default is false.</param>
+            <param name="handler">The standard output handler.</param>
+            <returns>The same <see cref="T:Cake.Core.IO.ProcessSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.ProcessSettingsExtensions.SetRedirectedStandardErrorHandler(Cake.Core.IO.ProcessSettings,System.Func{System.String,System.String})">
+            <summary>
+            Sets a function that intercepts the standard error before being redirected. Use in conjunction with <see cref="P:Cake.Core.IO.ProcessSettings.RedirectStandardOutput"/>
+            </summary>
+            <param name="settings">The process settings.</param>
+            <param name="handler">The standard error handler.</param>
+            <returns>The same <see cref="T:Cake.Core.IO.ProcessSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.ProcessSettingsExtensions.SetRedirectStandardOutput(Cake.Core.IO.ProcessSettings,System.Boolean)">
+            <summary>
+            Sets a value indicating whether the output of an application is written to the standard output stream.
+            </summary>
+            <param name="settings">The process settings.</param>
+            <param name="redirect">true if output should be redirected; false if output should be written to the standard output stream. The default is false.</param>
+            <returns>The same <see cref="T:Cake.Core.IO.ProcessSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.ProcessSettingsExtensions.SetRedirectStandardError(Cake.Core.IO.ProcessSettings,System.Boolean)">
+            <summary>
+            Sets a value indicating whether the standard error of an application is written to the standard error stream.
+            </summary>
+            <param name="settings">The process settings.</param>
+            <param name="redirect">true if error output should be redirected; false if error output should be written to the standard error stream. The default is false.</param>
             <returns>The same <see cref="T:Cake.Core.IO.ProcessSettings"/> instance so that multiple calls can be chained.</returns>
         </member>
         <member name="M:Cake.Core.ProcessSettingsExtensions.SetTimeout(Cake.Core.IO.ProcessSettings,System.Int32)">
@@ -2809,6 +3190,11 @@
         <member name="P:Cake.Core.ICakeContext.Data">
             <summary>
             Gets the data context resolver.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.ICakeContext.Configuration">
+            <summary>
+            Gets the cake configuration.
             </summary>
         </member>
         <member name="T:Cake.Core.ICakeDataResolver">
@@ -3115,6 +3501,11 @@
             </summary>
             <value>The background color</value>
         </member>
+        <member name="P:Cake.Core.IConsole.SupportAnsiEscapeCodes">
+            <summary>
+            Gets a value indicating whether or not the console supports ANSI escape codes.
+            </summary>
+        </member>
         <member name="M:Cake.Core.IConsole.Write(System.String,System.Object[])">
             <summary>
             Writes the text representation of the specified array of objects to the
@@ -3188,25 +3579,29 @@
             <param name="task">The task to skip.</param>
             <param name="criteria">The criteria that caused the task to be skipped.</param>
         </member>
-        <member name="M:Cake.Core.IExecutionStrategy.ReportErrors(System.Action{System.Exception},System.Exception)">
+        <member name="M:Cake.Core.IExecutionStrategy.ReportErrorsAsync(System.Func{System.Exception,System.Threading.Tasks.Task},System.Exception)">
             <summary>
             Executes the error reporter.
             </summary>
             <param name="action">The action.</param>
             <param name="exception">The exception.</param>
+            <returns>The awaitable task.</returns>
         </member>
-        <member name="M:Cake.Core.IExecutionStrategy.HandleErrors(System.Action{System.Exception},System.Exception)">
+        <member name="M:Cake.Core.IExecutionStrategy.HandleErrorsAsync(System.Func{System.Exception,Cake.Core.ICakeContext,System.Threading.Tasks.Task},System.Exception,Cake.Core.ICakeContext)">
             <summary>
             Executes the error handler.
             </summary>
             <param name="action">The action.</param>
             <param name="exception">The exception.</param>
+            <param name="context">The context.</param>
+            <returns>The awaitable task.</returns>
         </member>
-        <member name="M:Cake.Core.IExecutionStrategy.InvokeFinally(System.Action)">
+        <member name="M:Cake.Core.IExecutionStrategy.InvokeFinallyAsync(System.Func{System.Threading.Tasks.Task})">
             <summary>
             Invokes the finally handler.
             </summary>
             <param name="action">The action.</param>
+            <returns>The awaitable task.</returns>
         </member>
         <member name="M:Cake.Core.IExecutionStrategy.PerformTaskSetup(System.Action{Cake.Core.ITaskSetupContext},Cake.Core.ITaskSetupContext)">
             <summary>
@@ -3951,6 +4346,11 @@
             Gets or sets the predicate used to filter directories based on file system information.
             </summary>
         </member>
+        <member name="P:Cake.Core.IO.GlobberSettings.FilePredicate">
+            <summary>
+            Gets or sets the filter used to filter files based on file system information.
+            </summary>
+        </member>
         <member name="P:Cake.Core.IO.GlobberSettings.IsCaseSensitive">
             <summary>
             Gets or sets whether or not globbing is case sensitive or not.
@@ -4655,6 +5055,16 @@
             </summary>
             <value>true if output should be redirected; false if output should be written to the standard output stream. The default is false.</value>
         </member>
+        <member name="P:Cake.Core.IO.ProcessSettings.RedirectedStandardErrorHandler">
+            <summary>
+            Gets or sets a function that intercepts the error output before being redirected. Use in conjunction with <see cref="P:Cake.Core.IO.ProcessSettings.RedirectStandardError"/>
+            </summary>
+        </member>
+        <member name="P:Cake.Core.IO.ProcessSettings.RedirectedStandardOutputHandler">
+            <summary>
+            Gets or sets a function that intercepts the standard output before being redirected. Use in conjunction with <see cref="P:Cake.Core.IO.ProcessSettings.RedirectStandardOutput"/>
+            </summary>
+        </member>
         <member name="P:Cake.Core.IO.ProcessSettings.Timeout">
             <summary>
             Gets or sets optional timeout, in milliseconds, to wait for the associated process to exit. The maximum is the largest possible value of a 32-bit integer, which represents infinity to the operating system.
@@ -4815,6 +5225,19 @@
             <value>
             <c>true</c> if skipped; otherwise, <c>false</c>.
             </value>
+        </member>
+        <member name="P:Cake.Core.ITaskTeardownContext.Successful">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Cake.Core.CakeTask"/> was successful
+            </summary>
+            <value>
+            <c>true</c> if successful; otherwise <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Core.ITaskTeardownContext.ThrownException">
+            <summary>
+            Gets the exception that was thrown by the tasl.
+            </summary>
         </member>
         <member name="T:Cake.Core.ITeardownContext">
             <summary>
@@ -5341,6 +5764,16 @@
             <param name="method">The method to generate the code for.</param>
             <returns>The generated code.</returns>
         </member>
+        <member name="M:Cake.Core.Scripting.CodeGen.MethodAliasGenerator.Generate(System.Reflection.MethodInfo,System.String@)">
+            <summary>
+            Generates a script method alias from the specified method.
+            The provided method must be an extension method for <see cref="T:Cake.Core.ICakeContext"/>
+            and it must be decorated with the <see cref="T:Cake.Core.Annotations.CakeMethodAliasAttribute"/>.
+            </summary>
+            <param name="method">The method to generate the code for.</param>
+            <param name="hash">The hash of method signature.</param>
+            <returns>The generated code.</returns>
+        </member>
         <member name="T:Cake.Core.Scripting.CodeGen.ParameterEmitter">
             <summary>
             Responsible for generating parameter tokens in method alias generation
@@ -5363,6 +5796,16 @@
             and it must be decorated with the <see cref="T:Cake.Core.Annotations.CakePropertyAliasAttribute"/>.
             </summary>
             <param name="method">The method to generate the code for.</param>
+            <returns>The generated code.</returns>
+        </member>
+        <member name="M:Cake.Core.Scripting.CodeGen.PropertyAliasGenerator.Generate(System.Reflection.MethodInfo,System.String@)">
+            <summary>
+            Generates a script property alias from the specified method.
+            The provided method must be an extension method for <see cref="T:Cake.Core.ICakeContext"/>
+            and it must be decorated with the <see cref="T:Cake.Core.Annotations.CakePropertyAliasAttribute"/>.
+            </summary>
+            <param name="method">The method to generate the code for.</param>
+            <param name="hash">The hash of property signature.</param>
             <returns>The generated code.</returns>
         </member>
         <member name="T:Cake.Core.Scripting.IScriptAliasFinder">
@@ -5394,6 +5837,12 @@
             </summary>
             <param name="root">The root to where to find Cake related assemblies.</param>
             <returns>A list containing all default assemblies.</returns>
+        </member>
+        <member name="M:Cake.Core.Scripting.IScriptConventions.GetDefaultDefines">
+            <summary>
+            Gets the default defines.
+            </summary>
+            <returns>A list containing all default defines.</returns>
         </member>
         <member name="T:Cake.Core.Scripting.IScriptEngine">
             <summary>
@@ -5585,6 +6034,11 @@
             </summary>
             <value>The namespaces.</value>
         </member>
+        <member name="P:Cake.Core.Scripting.Script.ExcludedNamespaces">
+            <summary>
+            Gets the namespaces flagged to be excluded by code generation and affected aliases.
+            </summary>
+        </member>
         <member name="P:Cake.Core.Scripting.Script.Lines">
             <summary>
             Gets the script lines.
@@ -5710,12 +6164,13 @@
             The script conventions used by Cake.
             </summary>
         </member>
-        <member name="M:Cake.Core.Scripting.ScriptConventions.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.Reflection.IAssemblyLoader)">
+        <member name="M:Cake.Core.Scripting.ScriptConventions.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.Reflection.IAssemblyLoader,Cake.Core.ICakeRuntime)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.Scripting.ScriptConventions"/> class.
             </summary>
             <param name="fileSystem">The file system.</param>
             <param name="loader">The assembly loader.</param>
+            <param name="runtime">The Cake runtime.</param>
         </member>
         <member name="M:Cake.Core.Scripting.ScriptConventions.GetDefaultNamespaces">
             <summary>
@@ -5729,6 +6184,12 @@
             </summary>
             <param name="root">The root to where to find Cake related assemblies.</param>
             <returns>A list containing all default assemblies.</returns>
+        </member>
+        <member name="M:Cake.Core.Scripting.ScriptConventions.GetDefaultDefines">
+            <summary>
+            Gets the default defines.
+            </summary>
+            <returns>A list containing all default defines.</returns>
         </member>
         <member name="T:Cake.Core.Scripting.ScriptHost">
             <summary>
@@ -6132,6 +6593,13 @@
             </summary>
             <returns>The name of the tool.</returns>
         </member>
+        <member name="M:Cake.Core.Tooling.Tool`1.GetToolExecutableNames(`0)">
+            <summary>
+            Gets the possible names of the tool executable.
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>The name of the tool.</returns>
+        </member>
         <member name="M:Cake.Core.Tooling.Tool`1.GetToolExecutableNames">
             <summary>
             Gets the possible names of the tool executable.
@@ -6224,7 +6692,7 @@
             Implementation of the default tool resolution strategy.
             </summary>
         </member>
-        <member name="M:Cake.Core.Tooling.ToolResolutionStrategy.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IGlobber,Cake.Core.Configuration.ICakeConfiguration)">
+        <member name="M:Cake.Core.Tooling.ToolResolutionStrategy.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IGlobber,Cake.Core.Configuration.ICakeConfiguration,Cake.Core.Diagnostics.ICakeLog)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.Tooling.ToolResolutionStrategy"/> class.
             </summary>
@@ -6232,6 +6700,7 @@
             <param name="environment">The environment.</param>
             <param name="globber">The globber.</param>
             <param name="configuration">The configuration.</param>
+            <param name="log">The log.</param>
         </member>
         <member name="M:Cake.Core.Tooling.ToolResolutionStrategy.Resolve(Cake.Core.Tooling.IToolRepository,System.String)">
             <summary>
@@ -6529,7 +6998,7 @@
             Acts as a context providing info about a <see cref="T:Cake.Core.ICakeTaskInfo"/> following its invocation.
             </summary>
         </member>
-        <member name="M:Cake.Core.TaskTeardownContext.#ctor(Cake.Core.ICakeContext,Cake.Core.ICakeTaskInfo,System.TimeSpan,System.Boolean)">
+        <member name="M:Cake.Core.TaskTeardownContext.#ctor(Cake.Core.ICakeContext,Cake.Core.ICakeTaskInfo,System.TimeSpan,System.Boolean,System.Exception)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.TaskTeardownContext"/> class.
             </summary>
@@ -6537,6 +7006,7 @@
             <param name="task">The task.</param>
             <param name="duration">The duration of the task.</param>
             <param name="skipped">if set to <c>true</c>, the task was not executed.</param>
+            <param name="throwException">The exception that was thrown by the task.</param>
         </member>
         <member name="P:Cake.Core.TaskTeardownContext.Task">
             <summary>
@@ -6561,6 +7031,19 @@
             <value>
             <c>true</c> if skipped; otherwise, <c>false</c>.
             </value>
+        </member>
+        <member name="P:Cake.Core.TaskTeardownContext.Successful">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Cake.Core.CakeTask"/> was successful
+            </summary>
+            <value>
+            <c>true</c> if successful; otherwise <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Core.TaskTeardownContext.ThrownException">
+            <summary>
+            Gets the exception that was thrown by the tasl.
+            </summary>
         </member>
         <member name="T:Cake.Core.TaskTeardownEventArgs">
             <summary>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.46">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid81;MonoAndroid90</TargetFrameworks>
@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.46" PrivateAssets="All" />
+        <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.54" PrivateAssets="All" />
         <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
         <PackageReference Include="System.Json" Version="4.6.0" />
     </ItemGroup>
