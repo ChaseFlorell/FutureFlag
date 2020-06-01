@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
 using FutureFlag.Base;
 using FutureFlag.Exceptions;
@@ -15,6 +17,18 @@ namespace FutureFlag
         private static readonly HashSet<string> _assertions = new HashSet<string>();
 
         private FutureFlagConfiguration(){ /* Private Constructor so that the user must use the static method */ }
+
+        /// <summary>
+        /// Applies a custom Delegating Handler to the <see cref="JsonRestFutureFlag"/> in order to provide a way to add custom headers and handlers to http requests.
+        /// </summary>
+        /// <param name="handler">Custom <see cref="DelegatingHandler"/></param>
+        /// <exception cref="InvalidOperationException">Thrown when a user tries to override the Now provider more than once</exception>
+        public FutureFlagConfiguration WithHttpHandler(DelegatingHandler handler)
+        {
+            AssertConfiguration();
+            JsonRestFutureFlag.SetHttpHandler(handler);
+            return this;
+        }
 
         /// <summary>Overrides the way the library acquires Now</summary>
         /// <param name="provider">Provider used to determine Now</param>
@@ -104,6 +118,12 @@ namespace FutureFlag
                 throw new InvalidOperationException($"{methodName} can only be configured once" );
 
             _assertions.Add(methodName);
+        }
+
+        internal static void Reset()
+        {
+            _configured = false;
+            _assertions.Clear();
         }
     }
 }

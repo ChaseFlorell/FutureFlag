@@ -25,8 +25,9 @@ namespace FutureFlag
     public class JsonRestFutureFlag : IFutureFlag
 #endif
     {
+        private static HttpClient _client;
+        private static HttpClient Client => _client ?? (_client = new HttpClient());
         
-        private static readonly HttpClient _client = new HttpClient();
         private string _url;
         
 #if XAMARIN_FORMS
@@ -70,7 +71,7 @@ namespace FutureFlag
 
         private void CheckIsEnabled(string url)
         {
-            _client.GetAsync(url).ContinueWith(async t =>
+            Client.GetAsync(url).ContinueWith(async t =>
             {
                 var response = t.Result;
 
@@ -93,5 +94,7 @@ namespace FutureFlag
                 }
             });
         }
+
+        internal static void SetHttpHandler(DelegatingHandler handler) => _client = new HttpClient(handler);
     }
 }
