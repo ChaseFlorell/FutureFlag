@@ -23,7 +23,7 @@
   deploy:
     - provider: NuGet
       api_key:
-        secure: YHSRxhHHN8gHbxAPSqK73zlaSq0hFNlQf7W63ahXBVn8Y6H57nOriL7GDPaESW6Y
+        secure: NwLVBtSB1MOBBVr8+8PbmF94Ia+C4NxfmeF2ltWYpID28E0H++XqSscA7ZAyzc5Q
 -
   version: '{build}'
   branches:
@@ -49,4 +49,4 @@
   deploy:
     - provider: NuGet
       api_key:
-        secure: YHSRxhHHN8gHbxAPSqK73zlaSq0hFNlQf7W63ahXBVn8Y6H57nOriL7GDPaESW6Y
+        secure: NwLVBtSB1MOBBVr8+8PbmF94Ia+C4NxfmeF2ltWYpID28E0H++XqSscA7ZAyzc5Q
