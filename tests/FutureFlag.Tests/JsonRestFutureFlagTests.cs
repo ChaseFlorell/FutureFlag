@@ -1,11 +1,10 @@
 using System.Net.Http;
 using FakeItEasy;
-using FutureFlag.Tests.Base;
 using NUnit.Framework;
+using NUnit;
 
 namespace FutureFlag.Tests
 {
-    [TestFixture]
     public class JsonRestFutureFlagTests : TestBase
     {
         [Test]

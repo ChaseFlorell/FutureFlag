@@ -1,13 +1,11 @@
 using System;
 using FakeItEasy;
 using FluentAssertions;
-using FutureFlag.Tests.Base;
 using NUnit.Framework;
 
 namespace FutureFlag.Tests
 {
-    [TestFixture]
-    public class CachedFutureFlagProviderTests: TestBase
+    public class CachedFutureFlagProviderTests : TestBase
     {
         [Test]
         public void ShouldCacheAFutureFlagValue()

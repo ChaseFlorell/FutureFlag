@@ -1,4 +1,4 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.11.1
+#tool "nuget:?package=xunit.runner.console&version=2.4.1"
 
 var target = Argument("target", "Default");
 var clean = Argument("configuration", "Clean");
@@ -26,9 +26,10 @@ Task("Default").IsDependentOn("Run-Unit-Tests");
 Task("Build")
     .Does(() => {
       Information(artifactsDir);
-      MSBuild("./FutureFlag.sln", new MSBuildSettings()
+      MSBuild("./FutureFlag.sln", configurator => configurator
         .SetConfiguration(configuration)
         .SetVerbosity(Verbosity.Minimal)
+        .UseToolVersion(MSBuildToolVersion.VS2019)
         .WithTarget("Rebuild")
         .WithProperty("VersionSuffix", versionSuffix)
         .WithProperty("OutDir", System.IO.Path.GetFullPath(artifactsDir.ToString()))
@@ -39,16 +40,17 @@ Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    var resultsFile = artifactsDir.ToString() + "/test-results.xml";
+    var projects = GetFiles("./tests/**/*.Tests.csproj");
 
-    NUnit3("./artifacts/*.Tests.dll", new NUnit3Settings {
-        NoResults = false,
-        Results = new[] { new NUnit3Result { FileName = resultsFile } },           
-    });
-
-    if(AppVeyor.IsRunningOnAppVeyor)
+    foreach(var project in projects)
     {
-        AppVeyor.UploadTestResults(resultsFile, AppVeyorTestResultsType.NUnit3);
+      DotNetCoreTest(
+        project.FullPath,
+        new DotNetCoreTestSettings()
+          {
+            // Set configuration as passed by command line
+            Configuration = configuration
+          });
     }
 });
 
