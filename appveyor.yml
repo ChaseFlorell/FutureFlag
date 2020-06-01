@@ -19,7 +19,7 @@
   build_script:
     - ps: ./build
   artifacts:
-    - path: '**\FutureFlag.*(\.|\.s)nupkg'
+    - path: '**\FutureFlag.*.nupkg'
   deploy:
     - provider: NuGet
       api_key:
@@ -45,7 +45,7 @@
   build_script:
     - ps: ./build
   artifacts:
-    - path: '**\FutureFlag.*(\.|\.s)nupkg'
+    - path: '**\FutureFlag.*.nupkg'
   deploy:
     - provider: NuGet
       api_key:
