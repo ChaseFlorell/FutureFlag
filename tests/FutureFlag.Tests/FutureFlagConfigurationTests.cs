@@ -2,12 +2,10 @@ using System;
 using System.Net.Http;
 using FakeItEasy;
 using FluentAssertions;
-using FutureFlag.Tests.Base;
 using NUnit.Framework;
 
 namespace FutureFlag.Tests
 {
-    [TestFixture]
     public class FutureFlagConfigurationTests : TestBase
     {
         [Test]
@@ -22,14 +20,14 @@ namespace FutureFlag.Tests
                 .WithHttpHandler(handler)
                 .UtcNowProvider(() => DateTime.UtcNow)
                 .SetIsEnabledForExactVersion("1.2.3.4")
-                          );
+            );
 
             // execute 
 
             // assert
             config.Should().NotThrow();
         }
-        
+
         [Test]
         public void ShouldFailConfigurationBecauseAlreadyConfigured()
         {

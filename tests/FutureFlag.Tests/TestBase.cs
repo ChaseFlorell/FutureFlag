@@ -1,13 +1,12 @@
 using NUnit.Framework;
 
-namespace FutureFlag.Tests.Base
+namespace FutureFlag.Tests
 {
     public class TestBase
     {
         [TearDown]
         public void TearDown()
         {
-            // simply resets the configuration assertions after every test run
             FutureFlagConfiguration.Reset();
         }
     }
