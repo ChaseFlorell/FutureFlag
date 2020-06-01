@@ -18,12 +18,17 @@ Setup(context =>
 	CleanDirectories(binsToClean);
 	CleanDirectories(testsToClean);
     CreateDirectory(artifactsDir);
-    NuGetRestore("./FutureFlag.sln", new NuGetRestoreSettings { NoCache = true });
 });
 
 Task("Default").IsDependentOn("Run-Unit-Tests");
 
+Task("Nuget Restore")
+    .Does(() => {
+        NuGetRestore("./FutureFlag.sln", new NuGetRestoreSettings { NoCache = true });
+});
+
 Task("Build")
+    .IsDependentOn("Nuget Restore")
     .Does(() => {
       Information(artifactsDir);
       MSBuild("./FutureFlag.sln", configurator => configurator
