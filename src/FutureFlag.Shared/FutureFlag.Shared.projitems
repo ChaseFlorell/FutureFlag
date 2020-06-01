@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AlwaysOffFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AlwaysOnFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AnyFutureFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\CompositeFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\DateFutureFlag.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Base\VersionHelper.cs" />

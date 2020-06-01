@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Reflection;
 using FluentAssertions;
+using FutureFlag.Tests.Base;
 using NUnit.Framework;
 
 namespace FutureFlag.Tests
 {
     [TestFixture]
-    public class VersionFutureFlagTests
+    public class VersionFutureFlagTests : TestBase
     {
         private VersionFutureFlag _versionFutureFlag;
 
-        [OneTimeSetUp]
+        [SetUp]
         public void OneTimeSetUp()
         {
             Version VersionProvider() => new Version("1.0.0.0");
