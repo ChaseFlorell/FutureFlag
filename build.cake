@@ -1,4 +1,4 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.9.0
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.11.1
 
 var target = Argument("target", "Default");
 var clean = Argument("configuration", "Clean");
@@ -26,11 +26,7 @@ Task("Default").IsDependentOn("Run-Unit-Tests");
 Task("Build")
     .Does(() => {
       Information(artifactsDir);
-      MSBuild("./FutureFlag.sln", new MSBuildSettings
-        {
-            ToolVersion = MSBuildToolVersion.VS2017,
-            MSBuildPlatform = (Cake.Common.Tools.MSBuild.MSBuildPlatform)1
-        }
+      MSBuild("./FutureFlag.sln", new MSBuildSettings()
         .SetConfiguration(configuration)
         .SetVerbosity(Verbosity.Minimal)
         .WithTarget("Rebuild")

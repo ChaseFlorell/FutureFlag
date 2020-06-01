@@ -6,7 +6,7 @@
     <members>
         <member name="F:Cake.NuGet.Constants.NuGet.Source">
             <summary>
-            The config key name for overriding the default nuget package source
+            The config key name for overriding the default NuGet package source
             </summary>
         </member>
         <member name="F:Cake.NuGet.Constants.NuGet.UseInProcessClient">
@@ -16,12 +16,12 @@
         </member>
         <member name="F:Cake.NuGet.Constants.NuGet.LoadDependencies">
             <summary>
-            The config key name for enabling loading of nuget package dependencies
+            The config key name for enabling loading of NuGet package dependencies
             </summary>
         </member>
         <member name="F:Cake.NuGet.Constants.NuGet.ConfigFile">
             <summary>
-            The config key name for overriding the default nuget config file
+            The config key name for overriding the default NuGet config file
             </summary>
         </member>
         <member name="M:Cake.NuGet.Install.NuGetPackageInstaller.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.NuGet.INuGetContentResolver,Cake.Core.Diagnostics.ICakeLog,Cake.Core.Configuration.ICakeConfiguration)">
