@@ -30,7 +30,7 @@
   branches:
     only:
       - master
-  image: Visual Studio 2019
+  image: macOS
   init:
     - ps: Update-AppveyorBuild -Version "$(Get-Date -format yyyy.M).$env:appveyor_build_number"
   dotnet_csproj:
