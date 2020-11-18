@@ -5,7 +5,7 @@
       - development
   image: macOS
   init:
-    - sh: Update-AppveyorBuild -Version "$(Get-Date -format yyyy.M).$env:appveyor_build_number"
+    - sh: appveyor AppveyorBuild "${$(date '+%Y.%m')}.${$APPVEYOR_BUILD_NUMBER}"
   dotnet_csproj:
     patch: true
     file: '**\Directory.Build.props'
@@ -32,7 +32,7 @@
       - master
   image: macOS
   init:
-    - sh: Update-AppveyorBuild -Version "$(Get-Date -format yyyy.M).$env:appveyor_build_number"
+    - sh: appveyor AppveyorBuild "${$(date '+%Y.%m')}.${$APPVEYOR_BUILD_NUMBER}"
   dotnet_csproj:
     patch: true
     file: '**\Directory.Build.props'
