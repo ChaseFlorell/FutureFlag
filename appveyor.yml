@@ -17,7 +17,7 @@
   environment:
     CAKE_SETTINGS_SKIPPACKAGEVERSIONCHECK: true
   build_script:
-    - sh: ./build
+    - sh: ./build.sh
   artifacts:
     - path: '**\FutureFlag.*.nupkg'
   deploy:
@@ -44,7 +44,7 @@
   environment:
     CAKE_SETTINGS_SKIPPACKAGEVERSIONCHECK: true
   build_script:
-    - sh: ./build
+    - sh: ./build.sh
   artifacts:
     - path: '**\FutureFlag.*.nupkg'
   deploy:
