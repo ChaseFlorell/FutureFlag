@@ -1,6 +1,9 @@
 <Project>
     <PropertyGroup>
-
+        
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>
+        <LangVersion>latest</LangVersion>
         <PackOnBuild>true</PackOnBuild>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateProjectSpecificOutputFolder>true</GenerateProjectSpecificOutputFolder>

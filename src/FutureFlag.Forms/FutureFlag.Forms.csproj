@@ -1,12 +1,11 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid81;MonoAndroid90</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid10.0</TargetFrameworks>
         <RootNamespace>FutureFlag</RootNamespace>
         <AssemblyName>FutureFlag.Forms</AssemblyName>
         <PackageId>FutureFlag.Forms</PackageId>
         <DefineConstants>XAMARIN_FORMS</DefineConstants>
-        <LangVersion>latest</LangVersion>
 
         <Summary>FutureFlag.Forms: a feature flag library designed to target Xamarin.Forms</Summary>
         <Description>FutureFlag.Forms: a feature flag library designed to target Xamarin.Forms</Description>
@@ -14,9 +13,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.54" PrivateAssets="All" />
-        <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
-        <PackageReference Include="System.Json" Version="4.6.0" />
+        <PackageReference Include="MSBuild.Sdk.Extras" PrivateAssets="All" />
+        <PackageReference Include="Xamarin.Forms" />
+        <PackageReference Include="System.Json" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,7 +23,7 @@
         <DebugType>full</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
-    
+
     <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
         <!-- Android specific includes -->
     </ItemGroup>
