@@ -10,12 +10,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NodaTime" Version="3.0.3" />
-        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+        <PackageReference Include="NodaTime" />
+        <PackageReference Include="Xamarin.Forms" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\FutureFlag.Forms\FutureFlag.Forms.csproj" />
+        <ProjectReference Include="..\..\src\FutureFlag.Forms\FutureFlag.Forms.csproj" />
     </ItemGroup>
-    
+
 </Project>

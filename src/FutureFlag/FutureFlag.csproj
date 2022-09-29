@@ -1,8 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
 
-    <PropertyGroup>        
+    <PropertyGroup>
         <TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid81;MonoAndroid90;net452</TargetFrameworks>
-        <LangVersion>latest</LangVersion>
         <AssemblyName>FutureFlag</AssemblyName>
         <PackageId>FutureFlag</PackageId>
 
@@ -12,13 +11,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MSBuild.Sdk.Extras" Version="2.0.54" PrivateAssets="All" />
-        <PackageReference Include="System.Json" Version="4.7.1" />
-        <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    </ItemGroup>    
-    
+        <PackageReference Include="MSBuild.Sdk.Extras" PrivateAssets="All" />
+        <PackageReference Include="System.Json" />
+        <PackageReference Include="System.Net.Http" />
+    </ItemGroup>
+
     <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
-    <!-- Android specific includes -->
+        <!-- Android specific includes -->
     </ItemGroup>
     <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid90')) ">
         <!-- Android 9.0 specific includes -->
@@ -35,5 +34,5 @@
     <Import Project="..\FutureFlag.Shared.Touch\FutureFlag.Shared.Touch.projitems" Label="Touch" Condition="$(TargetFramework.StartsWith('Xamarin.iOS'))" />
     <Import Project="..\FutureFlag.Shared.NetStandard\FutureFlag.Shared.NetStandard.projitems" Label="NetStandard" Condition="$(TargetFramework.StartsWith('net'))" />
     <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
-    
+
 </Project>
